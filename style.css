@@ -107,6 +107,46 @@ main {
     margin-top: 0;
 }
 
+.contact {
+    margin-top: 2em;
+}
+
+.contact-form {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 1em;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5em;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.5em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: inherit;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.error-message {
+    display: block;
+    color: red;
+    font-size: 0.875em;
+    margin-top: 0.25em;
+}
+
 .testimonials {
     margin-top: 2em;
 }
