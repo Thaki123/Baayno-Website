@@ -106,6 +106,56 @@ main {
 .card h3 {
     margin-top: 0;
 }
+
+.testimonials {
+    margin-top: 2em;
+}
+
+.testimonial-carousel {
+    position: relative;
+    max-width: 500px;
+    margin: 0 auto;
+    min-height: 180px;
+}
+
+.testimonial {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1em;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.testimonial.active {
+    position: relative;
+    opacity: 1;
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.carousel-btn.prev {
+    left: 10px;
+}
+
+.carousel-btn.next {
+    right: 10px;
+}
 button {
     padding: 0.5em 1em;
     font-size: 1em;
