@@ -12,17 +12,21 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="body-font">
-    <header class="navbar">
-        <a href="#" class="logo"><img src="logo.svg" alt="Fouad Baayno Bookbindery logo" loading="lazy"></a>
-        <nav>
-            <ul class="nav-links" id="nav-links">
-                <li><a href="#hero">Home</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-        <button id="nav-toggle" aria-label="Toggle navigation" aria-controls="nav-links" aria-expanded="false">&#9776;</button>
-    </header>
+    <div class="sticky-header">
+        <header class="navbar">
+            <a href="#" class="logo"><img src="logo.svg" alt="Fouad Baayno Bookbindery logo" loading="lazy"></a>
+            <nav>
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <button id="nav-toggle" aria-label="Toggle navigation" aria-controls="nav-links" aria-expanded="false">&#9776;</button>
+        </header>
+    </div>
     <section class="hero" id="hero">
         <div class="hero-content container">
             <h1 class="heading-font">Handcrafted Bookbinding</h1>
@@ -102,6 +106,16 @@
                     <figcaption>Foil stamping on leather spine</figcaption>
                 </figure>
             </div>
+        </section>
+
+        <section id="portfolio" class="portfolio container">
+            <h2 class="heading-font">Portfolio</h2>
+            <p>Our latest projects will appear here.</p>
+        </section>
+
+        <section id="blog" class="blog container">
+            <h2 class="heading-font">Blog</h2>
+            <p>Insights and updates coming soon.</p>
         </section>
 
         <section id="contact" class="contact">
