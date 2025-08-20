@@ -11,6 +11,17 @@ body {
     background: var(--light);
     color: var(--dark);
 }
+
+section {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
 h1, h2, h3, h4, h5, h6 {
     font-family: "Montserrat", sans-serif;
 }
@@ -56,6 +67,29 @@ h1, h2, h3, h4, h5, h6 {
 .nav-links a {
     color: var(--light);
     text-decoration: none;
+    position: relative;
+    transition: color 0.3s;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0;
+    height: 2px;
+    background: var(--light);
+    transition: width 0.3s;
+}
+
+.nav-links a:hover,
+.nav-links a:focus {
+    color: #ffe6d4;
+}
+
+.nav-links a:hover::after,
+.nav-links a:focus::after {
+    width: 100%;
 }
 
 #nav-toggle {
@@ -141,6 +175,13 @@ main {
     padding: 1em;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover,
+.card:focus-within {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 .card h3 {
@@ -244,9 +285,13 @@ button {
     border: 1px solid var(--primary);
     border-radius: 5px;
     cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
 }
-button:hover {
+
+button:hover,
+button:focus {
     background: var(--dark);
+    transform: translateY(-2px);
 }
 footer {
     text-align: center;
