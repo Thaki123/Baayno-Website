@@ -8,6 +8,16 @@ if (getStartedBtn) {
     });
 }
 
+const requestQuoteBtn = document.getElementById('request-quote');
+if (requestQuoteBtn) {
+    requestQuoteBtn.addEventListener('click', () => {
+        const target = document.getElementById('quote');
+        if (target) {
+            target.scrollIntoView({ behavior: 'smooth' });
+        }
+    });
+}
+
 function toggleNav() {
     const navLinks = document.querySelector('.nav-links');
     if (navLinks) {
@@ -162,6 +172,65 @@ document.addEventListener('DOMContentLoaded', () => {
             if (valid) {
                 contactForm.reset();
                 alert('Thank you for your message!');
+            }
+        });
+    }
+
+    const quoteForm = document.getElementById('quote-form');
+    if (quoteForm) {
+        quoteForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            let valid = true;
+            const nameInput = document.getElementById('quote-name');
+            const emailInput = document.getElementById('quote-email');
+            const bookTypeInput = document.getElementById('book-type');
+            const quantityInput = document.getElementById('quantity');
+            const nameError = document.getElementById('quote-name-error');
+            const emailError = document.getElementById('quote-email-error');
+            const bookTypeError = document.getElementById('book-type-error');
+            const quantityError = document.getElementById('quantity-error');
+            const successMessage = document.getElementById('quote-success');
+
+            nameError.textContent = '';
+            emailError.textContent = '';
+            bookTypeError.textContent = '';
+            quantityError.textContent = '';
+            if (successMessage) {
+                successMessage.textContent = '';
+            }
+
+            if (!nameInput.value.trim()) {
+                nameError.textContent = 'Name is required.';
+                valid = false;
+            }
+
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailInput.value.trim()) {
+                emailError.textContent = 'Email is required.';
+                valid = false;
+            } else if (!emailPattern.test(emailInput.value.trim())) {
+                emailError.textContent = 'Enter a valid email.';
+                valid = false;
+            }
+
+            if (!bookTypeInput.value.trim()) {
+                bookTypeError.textContent = 'Book type is required.';
+                valid = false;
+            }
+
+            if (!quantityInput.value.trim() || parseInt(quantityInput.value, 10) <= 0) {
+                quantityError.textContent = 'Enter a valid quantity.';
+                valid = false;
+            }
+
+            if (valid) {
+                quoteForm.reset();
+                if (successMessage) {
+                    successMessage.textContent = 'Quote request sent!';
+                    setTimeout(() => {
+                        successMessage.textContent = '';
+                    }, 5000);
+                }
             }
         });
     }
