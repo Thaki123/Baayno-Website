@@ -43,16 +43,32 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('section').forEach(section => observer.observe(section));
 
     const servicesData = [
-        { title: 'Web Development', description: 'Modern and responsive websites.' },
-        { title: 'UI/UX Design', description: 'Intuitive and engaging designs.' },
-        { title: 'Consulting', description: 'Expert guidance for your projects.' }
+        {
+            title: 'Web Development',
+            description: 'Modern and responsive websites.',
+            image: 'https://via.placeholder.com/300x150?text=Web+Dev'
+        },
+        {
+            title: 'UI/UX Design',
+            description: 'Intuitive and engaging designs.',
+            image: 'https://via.placeholder.com/300x150?text=UI+UX'
+        },
+        {
+            title: 'Consulting',
+            description: 'Expert guidance for your projects.'
+        }
     ];
-    const servicesSection = document.querySelector('.services .container');
+    const servicesSection = document.getElementById('services');
     if (servicesSection) {
         servicesData.forEach(service => {
             const article = document.createElement('article');
             article.className = 'card';
-            article.innerHTML = `<h3>${service.title}</h3><p>${service.description}</p>`;
+            let content = '';
+            if (service.image) {
+                content += `<img src="${service.image}" alt="${service.title}">`;
+            }
+            content += `<h3>${service.title}</h3><p>${service.description}</p>`;
+            article.innerHTML = content;
             servicesSection.appendChild(article);
         });
     }
