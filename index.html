@@ -27,6 +27,44 @@
     </section>
     <main>
         <p>This is your starter project. Begin building here!</p>
+        <section id="quote" class="quote">
+            <div class="container">
+                <h2 class="heading-font">Request a Quote</h2>
+                <form id="quote-form" class="quote-form" novalidate>
+                    <div class="form-group">
+                        <label for="quote-name">Name</label>
+                        <input type="text" id="quote-name" name="name">
+                        <span id="quote-name-error" class="error-message"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="quote-email">Email</label>
+                        <input type="email" id="quote-email" name="email">
+                        <span id="quote-email-error" class="error-message"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="book-type">Book Type</label>
+                        <select id="book-type" name="bookType">
+                            <option value="">Select a type</option>
+                            <option value="hardcover">Hardcover</option>
+                            <option value="paperback">Paperback</option>
+                            <option value="leather">Leather</option>
+                        </select>
+                        <span id="book-type-error" class="error-message"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="quantity">Quantity</label>
+                        <input type="number" id="quantity" name="quantity" min="1">
+                        <span id="quantity-error" class="error-message"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="quote-notes">Notes</label>
+                        <textarea id="quote-notes" name="notes"></textarea>
+                    </div>
+                    <button type="submit">Submit</button>
+                    <span id="quote-success" class="success-message"></span>
+                </form>
+            </div>
+        </section>
         <section id="services" class="services container">
             <!-- Service cards will be injected here -->
         </section>

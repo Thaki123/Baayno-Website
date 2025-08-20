@@ -211,7 +211,12 @@ main {
     margin-top: 2em;
 }
 
-.contact-form {
+.quote {
+    margin-top: 2em;
+}
+
+.contact-form,
+.quote-form {
     max-width: 500px;
     margin: 0 auto;
 }
@@ -227,7 +232,8 @@ main {
 }
 
 .form-group input,
-.form-group textarea {
+.form-group textarea,
+.form-group select {
     width: 100%;
     padding: 0.5em;
     border: 1px solid var(--black);
@@ -242,9 +248,20 @@ main {
 
 .error-message {
     display: block;
-    color: red;
+    color: var(--accent);
     font-size: 0.875em;
     margin-top: 0.25em;
+}
+
+.success-message {
+    color: var(--accent);
+    margin-top: 1em;
+    display: block;
+}
+
+.quote-form button[type="submit"] {
+    background: var(--accent);
+    color: var(--white);
 }
 
 .testimonials {
