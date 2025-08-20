@@ -25,6 +25,17 @@ if (navToggle) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                obs.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('section').forEach(section => observer.observe(section));
+
     const servicesData = [
         { title: 'Web Development', description: 'Modern and responsive websites.' },
         { title: 'UI/UX Design', description: 'Intuitive and engaging designs.' },
