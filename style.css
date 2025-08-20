@@ -30,7 +30,7 @@ section {
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
-section.visible {
+.fade-in {
     opacity: 1;
     transform: translateY(0);
 }
@@ -187,7 +187,7 @@ main {
     padding: 1em;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition: all 0.3s ease;
 }
 
 .card img {
@@ -321,7 +321,7 @@ button {
     border: none;
     border-radius: var(--radius);
     cursor: pointer;
-    transition: background 0.3s ease, transform 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 button:hover,
