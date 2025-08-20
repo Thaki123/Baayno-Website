@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { title: 'UI/UX Design', description: 'Intuitive and engaging designs.' },
         { title: 'Consulting', description: 'Expert guidance for your projects.' }
     ];
-    const servicesSection = document.querySelector('.services');
+    const servicesSection = document.querySelector('.services .container');
     if (servicesSection) {
         servicesData.forEach(service => {
             const article = document.createElement('article');

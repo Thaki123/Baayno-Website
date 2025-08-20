@@ -20,56 +20,64 @@
         </nav>
     </header>
     <section class="hero">
-        <h1>Welcome to Baayno</h1>
-        <p>Your journey starts here.</p>
-        <button id="get-started">Get Started</button>
+        <div class="container">
+            <h1>Welcome to Baayno</h1>
+            <p>Your journey starts here.</p>
+            <button id="get-started">Get Started</button>
+        </div>
     </section>
     <main>
         <p>This is your starter project. Begin building here!</p>
         <button onclick="showMessage()">Click Me</button>
         <section id="services" class="services">
-            <!-- Service cards will be injected here -->
+            <div class="container">
+                <!-- Service cards will be injected here -->
+            </div>
         </section>
 
         <section id="contact" class="contact">
-            <h2>Contact Us</h2>
-            <form id="contact-form" class="contact-form" novalidate>
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" name="name">
-                    <span id="name-error" class="error-message"></span>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email">
-                    <span id="email-error" class="error-message"></span>
-                </div>
-                <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea id="message" name="message"></textarea>
-                    <span id="message-error" class="error-message"></span>
-                </div>
-                <button type="submit">Send</button>
-            </form>
+            <div class="container">
+                <h2>Contact Us</h2>
+                <form id="contact-form" class="contact-form" novalidate>
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name">
+                        <span id="name-error" class="error-message"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email">
+                        <span id="email-error" class="error-message"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message"></textarea>
+                        <span id="message-error" class="error-message"></span>
+                    </div>
+                    <button type="submit">Send</button>
+                </form>
+            </div>
         </section>
 
         <section id="testimonials" class="testimonials">
-            <h2>Testimonials</h2>
-            <div class="testimonial-carousel">
-                <div class="testimonial active">
-                    <p>"Baayno transformed our business!"</p>
-                    <h4>- Alex</h4>
+            <div class="container">
+                <h2>Testimonials</h2>
+                <div class="testimonial-carousel">
+                    <div class="testimonial active">
+                        <p>"Baayno transformed our business!"</p>
+                        <h4>- Alex</h4>
+                    </div>
+                    <div class="testimonial">
+                        <p>"Their team is incredibly talented."</p>
+                        <h4>- Jamie</h4>
+                    </div>
+                    <div class="testimonial">
+                        <p>"Outstanding service and support."</p>
+                        <h4>- Casey</h4>
+                    </div>
+                    <button id="prev-testimonial" class="carousel-btn prev">&#10094;</button>
+                    <button id="next-testimonial" class="carousel-btn next">&#10095;</button>
                 </div>
-                <div class="testimonial">
-                    <p>"Their team is incredibly talented."</p>
-                    <h4>- Jamie</h4>
-                </div>
-                <div class="testimonial">
-                    <p>"Outstanding service and support."</p>
-                    <h4>- Casey</h4>
-                </div>
-                <button id="prev-testimonial" class="carousel-btn prev">&#10094;</button>
-                <button id="next-testimonial" class="carousel-btn next">&#10095;</button>
             </div>
         </section>
     </main>
