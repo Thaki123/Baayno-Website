@@ -48,6 +48,14 @@ section {
     padding: 0 1em;
 }
 
+.sticky-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: var(--color-black);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
 
 .navbar {
     display: flex;
@@ -94,6 +102,7 @@ section {
 }
 
 .nav-links a.active {
+    color: var(--color-accent);
     border-color: var(--color-gold);
 }
 
