@@ -165,4 +165,38 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = lightbox ? lightbox.querySelector('img') : null;
+    const lightboxCaption = lightbox ? lightbox.querySelector('.lightbox-caption') : null;
+    const lightboxClose = lightbox ? lightbox.querySelector('.lightbox-close') : null;
+
+    document.querySelectorAll('#gallery img').forEach(img => {
+        img.addEventListener('click', () => {
+            if (lightbox && lightboxImg) {
+                lightboxImg.src = img.src;
+                lightboxImg.alt = img.alt;
+                if (lightboxCaption) {
+                    const figure = img.closest('figure');
+                    const caption = figure ? figure.querySelector('figcaption') : null;
+                    lightboxCaption.textContent = caption ? caption.textContent : '';
+                }
+                lightbox.classList.add('open');
+            }
+        });
+    });
+
+    if (lightboxClose) {
+        lightboxClose.addEventListener('click', () => {
+            lightbox.classList.remove('open');
+        });
+    }
+
+    if (lightbox) {
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                lightbox.classList.remove('open');
+            }
+        });
+    }
 });
