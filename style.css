@@ -1,15 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Open+Sans:wght@400;700&display=swap');
+
 :root {
-    --primary: #e55300;
-    --dark: #222;
-    --light: #fff;
+    --black: #000;
+    --white: #fff;
+    --accent: #c00;
+}
+
+.body-font {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.heading-font {
+    font-family: 'Merriweather', serif;
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
-    background: var(--light);
-    color: var(--dark);
+    background: var(--white);
+    color: var(--black);
 }
 
 section {
@@ -21,9 +30,6 @@ section {
 section.visible {
     opacity: 1;
     transform: translateY(0);
-}
-h1, h2, h3, h4, h5, h6 {
-    font-family: "Montserrat", sans-serif;
 }
 
 .container {
@@ -37,8 +43,8 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: var(--primary);
-    color: var(--light);
+    background: var(--accent);
+    color: var(--white);
     padding: 1em;
     flex-wrap: wrap;
 }
@@ -65,7 +71,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .nav-links a {
-    color: var(--light);
+    color: var(--white);
     text-decoration: none;
     position: relative;
     transition: color 0.3s;
@@ -78,7 +84,7 @@ h1, h2, h3, h4, h5, h6 {
     bottom: -4px;
     width: 0;
     height: 2px;
-    background: var(--light);
+    background: var(--white);
     transition: width 0.3s;
 }
 
@@ -96,7 +102,7 @@ h1, h2, h3, h4, h5, h6 {
     display: none;
     background: none;
     border: none;
-    color: var(--light);
+    color: var(--white);
     font-size: 1.5rem;
     cursor: pointer;
 }
@@ -106,7 +112,7 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: var(--light);
+    color: var(--white);
     height: 60vh;
     background: url('path/to/hero.jpg') center/cover no-repeat;
 }
@@ -171,7 +177,7 @@ main {
 }
 
 .card {
-    background: var(--light);
+    background: var(--white);
     padding: 1em;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -211,7 +217,7 @@ main {
 .form-group textarea {
     width: 100%;
     padding: 0.5em;
-    border: 1px solid var(--dark);
+    border: 1px solid var(--black);
     border-radius: 4px;
     font-family: inherit;
 }
@@ -245,7 +251,7 @@ main {
     left: 0;
     width: 100%;
     padding: 1em;
-    background: var(--light);
+    background: var(--white);
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     opacity: 0;
@@ -262,7 +268,7 @@ main {
     top: 50%;
     transform: translateY(-50%);
     background: rgba(0, 0, 0, 0.5);
-    color: var(--light);
+    color: var(--white);
     border: none;
     border-radius: 50%;
     width: 30px;
@@ -280,9 +286,9 @@ main {
 button {
     padding: 0.5em 1em;
     font-size: 1em;
-    background: var(--primary);
-    color: var(--light);
-    border: 1px solid var(--primary);
+    background: var(--accent);
+    color: var(--white);
+    border: 1px solid var(--accent);
     border-radius: 5px;
     cursor: pointer;
     transition: background 0.3s, transform 0.3s;
@@ -290,14 +296,14 @@ button {
 
 button:hover,
 button:focus {
-    background: var(--dark);
+    background: var(--black);
     transform: translateY(-2px);
 }
 footer {
     text-align: center;
     padding: 1em;
-    background: var(--dark);
-    color: var(--light);
+    background: var(--black);
+    color: var(--white);
     position: fixed;
     width: 100%;
     bottom: 0;
@@ -312,7 +318,7 @@ footer {
         display: none;
         flex-direction: column;
         width: 100%;
-        background: var(--primary);
+        background: var(--accent);
         margin-top: 1em;
     }
 
