@@ -90,4 +90,46 @@ document.addEventListener('DOMContentLoaded', () => {
         showTestimonial(currentIndex);
         startInterval();
     }
+
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            let valid = true;
+            const nameInput = document.getElementById('name');
+            const emailInput = document.getElementById('email');
+            const messageInput = document.getElementById('message');
+            const nameError = document.getElementById('name-error');
+            const emailError = document.getElementById('email-error');
+            const messageError = document.getElementById('message-error');
+
+            nameError.textContent = '';
+            emailError.textContent = '';
+            messageError.textContent = '';
+
+            if (!nameInput.value.trim()) {
+                nameError.textContent = 'Name is required.';
+                valid = false;
+            }
+
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailInput.value.trim()) {
+                emailError.textContent = 'Email is required.';
+                valid = false;
+            } else if (!emailPattern.test(emailInput.value.trim())) {
+                emailError.textContent = 'Enter a valid email.';
+                valid = false;
+            }
+
+            if (!messageInput.value.trim()) {
+                messageError.textContent = 'Message is required.';
+                valid = false;
+            }
+
+            if (valid) {
+                contactForm.reset();
+                alert('Thank you for your message!');
+            }
+        });
+    }
 });
