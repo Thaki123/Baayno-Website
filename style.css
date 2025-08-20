@@ -4,6 +4,9 @@
     --black: #000;
     --white: #fff;
     --accent: #c00;
+    --accent-dark: #900;
+    --radius: 4px;
+    --btn-padding: 0.75em 1.5em;
 }
 
 .body-font {
@@ -105,6 +108,7 @@ section.visible {
     color: var(--white);
     font-size: 1.5rem;
     cursor: pointer;
+    padding: 0.25em 0.5em;
 }
 
 .hero {
@@ -284,19 +288,19 @@ main {
     right: 10px;
 }
 button {
-    padding: 0.5em 1em;
+    padding: var(--btn-padding);
     font-size: 1em;
     background: var(--accent);
     color: var(--white);
-    border: 1px solid var(--accent);
-    border-radius: 5px;
+    border: none;
+    border-radius: var(--radius);
     cursor: pointer;
-    transition: background 0.3s, transform 0.3s;
+    transition: background 0.3s ease, transform 0.3s ease;
 }
 
 button:hover,
 button:focus {
-    background: var(--black);
+    background: var(--accent-dark);
     transform: translateY(-2px);
 }
 footer {
