@@ -1,7 +1,3 @@
-function showMessage() {
-    alert("Hello from Baayno Website!");
-}
-
 const getStartedBtn = document.getElementById('get-started');
 if (getStartedBtn) {
     getStartedBtn.addEventListener('click', () => {
@@ -22,6 +18,16 @@ function toggleNav() {
 const navToggle = document.getElementById('nav-toggle');
 if (navToggle) {
     navToggle.addEventListener('click', toggleNav);
+}
+
+const navItems = document.querySelectorAll('.nav-links a');
+if (navItems.length) {
+    navItems.forEach(link => link.addEventListener('click', () => {
+        const navLinks = document.querySelector('.nav-links');
+        if (navLinks) {
+            navLinks.classList.remove('open');
+        }
+    }));
 }
 
 document.addEventListener('DOMContentLoaded', () => {
