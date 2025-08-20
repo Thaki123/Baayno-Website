@@ -1,4 +1,22 @@
-@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Open+Sans:wght@400;700&display=swap');
+/* Font declarations */
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    src: url('https://fonts.gstatic.com/s/opensans/v34/mem8YaGs126MiZpBA-UFVZ0e.woff2') format('woff2');
+}
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 700;
+    src: url('https://fonts.gstatic.com/s/opensans/v34/mem5YaGs126MiZpBA-UN7rgOXOhp.woff2') format('woff2');
+}
+@font-face {
+    font-family: 'caecilia_lt_std55_roman';
+    font-style: normal;
+    font-weight: 700;
+    src: url('https://fonts.cdnfonts.com/s/13982/CaeciliaLTStd-BoldItalic.woff') format('woff');
+}
 
 :root {
     --color-black: #0b0b0b;
@@ -7,7 +25,7 @@
     --color-accent-dark: #a3181e;
     --color-gold: #c9a227;
     --font-body: 'Open Sans', sans-serif;
-    --font-heading: 'Merriweather', serif;
+    --font-heading: 'caecilia_lt_std55_roman', serif;
     --fw-normal: 400;
     --fw-bold: 700;
     --radius: 12px;
@@ -24,11 +42,18 @@
     font-weight: var(--fw-bold);
 }
 
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: var(--fw-bold);
+}
+
 body {
     margin: 0;
     padding: 0;
     background: var(--color-white);
     color: var(--color-black);
+    font-family: var(--font-body);
+    font-weight: var(--fw-normal);
 }
 
 section {
