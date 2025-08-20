@@ -6,6 +6,37 @@ body {
     color: #333;
 }
 
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #0077cc;
+    color: white;
+    padding: 1em;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1em;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+}
+
+#nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
 .hero {
     position: relative;
     display: flex;
@@ -51,11 +82,8 @@ body {
     }
 }
 header {
-    background: #0077cc;
-    color: white;
-    padding: 1em;
-    text-align: center;
 }
+
 main {
     padding: 2em;
     text-align: center;
@@ -80,4 +108,22 @@ footer {
     position: fixed;
     width: 100%;
     bottom: 0;
+}
+
+@media (max-width: 768px) {
+    #nav-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: #0077cc;
+        margin-top: 1em;
+    }
+
+    .nav-links.open {
+        display: flex;
+    }
 }

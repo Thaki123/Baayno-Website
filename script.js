@@ -11,3 +11,15 @@ if (getStartedBtn) {
         }
     });
 }
+
+function toggleNav() {
+    const navLinks = document.querySelector('.nav-links');
+    if (navLinks) {
+        navLinks.classList.toggle('open');
+    }
+}
+
+const navToggle = document.getElementById('nav-toggle');
+if (navToggle) {
+    navToggle.addEventListener('click', toggleNav);
+}
