@@ -1,11 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Open+Sans:wght@400;700&display=swap');
 
 :root {
-    --black: #000;
-    --white: #fff;
-    --accent: #c00;
-    --accent-dark: #900;
-    --radius: 4px;
+    --black: #0b0b0b;
+    --white: #ffffff;
+    --accent: #d61f26;
+    --accent-dark: #a3181e;
+    --gold: #c9a227;
+    --radius: 12px;
     --btn-padding: 0.75em 1.5em;
 }
 
@@ -46,7 +47,7 @@ section {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: var(--accent);
+    background: var(--black);
     color: var(--white);
     padding: 1em;
     flex-wrap: wrap;
@@ -76,29 +77,18 @@ section {
 .nav-links a {
     color: var(--white);
     text-decoration: none;
-    position: relative;
-    transition: color 0.3s;
-}
-
-.nav-links a::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -4px;
-    width: 0;
-    height: 2px;
-    background: var(--white);
-    transition: width 0.3s;
+    padding-bottom: 2px;
+    border-bottom: 2px solid transparent;
+    transition: color 0.3s, border-color 0.3s;
 }
 
 .nav-links a:hover,
 .nav-links a:focus {
-    color: #ffe6d4;
+    color: var(--accent);
 }
 
-.nav-links a:hover::after,
-.nav-links a:focus::after {
-    width: 100%;
+.nav-links a.active {
+    border-color: var(--gold);
 }
 
 #nav-toggle {
@@ -119,7 +109,7 @@ section {
     align-items: center;
     color: var(--white);
     height: 100vh;
-    background: url('https://images.unsplash.com/photo-1519682337058-a94d519337bc?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+    background: url('https://images.unsplash.com/photo-1588774067489-58fdc141094a?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
 }
 
 .hero .container {
@@ -185,8 +175,9 @@ main {
 .card {
     background: var(--white);
     padding: 1em;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: var(--radius);
+    border-top: 4px solid var(--accent);
+    box-shadow: var(--shadow, 0 2px 4px rgba(0, 0, 0, 0.1));
     transition: all 0.3s ease;
 }
 
@@ -194,6 +185,11 @@ main {
     width: 100%;
     height: auto;
     border-radius: var(--radius);
+    margin-bottom: 0.5rem;
+}
+
+.card .icon {
+    font-size: 2rem;
     margin-bottom: 0.5rem;
 }
 
@@ -324,6 +320,26 @@ button {
     transition: all 0.3s ease;
 }
 
+.btn {
+    display: inline-block;
+    padding: var(--btn-padding);
+    border-radius: var(--radius);
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s, transform 0.3s;
+}
+
+.btn-primary {
+    background: var(--accent);
+    color: var(--white);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background: var(--accent-dark);
+    transform: translateY(-2px);
+}
+
 button:hover,
 button:focus {
     background: var(--accent-dark);
@@ -403,7 +419,7 @@ footer {
         display: none;
         flex-direction: column;
         width: 100%;
-        background: var(--accent);
+        background: var(--black);
         margin-top: 1em;
     }
 
