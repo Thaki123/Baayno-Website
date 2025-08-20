@@ -18,14 +18,16 @@ if (requestQuoteBtn) {
     });
 }
 
+const navToggle = document.getElementById('nav-toggle');
 function toggleNav() {
-    const navLinks = document.querySelector('.nav-links');
+    const navLinks = document.getElementById('nav-links');
+    const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+    navToggle.setAttribute('aria-expanded', String(!expanded));
     if (navLinks) {
         navLinks.classList.toggle('open');
     }
 }
 
-const navToggle = document.getElementById('nav-toggle');
 if (navToggle) {
     navToggle.addEventListener('click', toggleNav);
 }
@@ -33,10 +35,15 @@ if (navToggle) {
 const navItems = document.querySelectorAll('.nav-links a');
 if (navItems.length) {
     navItems.forEach(link => link.addEventListener('click', () => {
-        const navLinks = document.querySelector('.nav-links');
+        const navLinks = document.getElementById('nav-links');
         if (navLinks) {
             navLinks.classList.remove('open');
         }
+        if (navToggle) {
+            navToggle.setAttribute('aria-expanded', 'false');
+        }
+        navItems.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
     }));
 }
 
@@ -54,18 +61,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const servicesData = [
         {
-            title: 'Web Development',
-            description: 'Modern and responsive websites.',
-            image: 'https://via.placeholder.com/300x150?text=Web+Dev'
+            icon: '📚',
+            title: 'Hardcover Binding',
+            description: 'Durable covers for premium books.'
         },
         {
-            title: 'UI/UX Design',
-            description: 'Intuitive and engaging designs.',
-            image: 'https://via.placeholder.com/300x150?text=UI+UX'
+            icon: '📘',
+            title: 'Perfect/PUR Binding',
+            description: 'Clean, professional softcover books.'
         },
         {
-            title: 'Consulting',
-            description: 'Expert guidance for your projects.'
+            icon: '🛠️',
+            title: 'Restoration & Repair',
+            description: 'Give cherished books a new life.'
+        },
+        {
+            icon: '✨',
+            title: 'Foil & Embossing',
+            description: 'Custom finishes that stand out.'
+        },
+        {
+            icon: '🧪',
+            title: 'Short-Run Prototyping',
+            description: 'Test editions without large commitments.'
+        },
+        {
+            icon: '🏭',
+            title: 'Industrial Finishing',
+            description: 'High-volume finishing for publishers.'
         }
     ];
     const servicesSection = document.getElementById('services');
@@ -74,8 +97,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const article = document.createElement('article');
             article.className = 'card';
             let content = '';
-            if (service.image) {
-                content += `<img src="${service.image}" alt="${service.title}">`;
+            if (service.icon) {
+                content += `<div class="icon">${service.icon}</div>`;
             }
             content += `<h3>${service.title}</h3><p>${service.description}</p>`;
             article.innerHTML = content;
