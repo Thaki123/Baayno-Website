@@ -180,6 +180,15 @@ main {
     text-align: center;
 }
 
+.about {
+    margin-top: 2em;
+}
+
+.about p {
+    max-width: 800px;
+    margin: 0.5em auto 0;
+}
+
 .services,
 .portfolio-grid,
 .blog-grid {
