@@ -23,6 +23,19 @@ h1, h2, h3, h4, h5, h6 {
     background: var(--primary);
     color: var(--light);
     padding: 1em;
+    flex-wrap: wrap;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    margin-right: 1em;
+}
+
+.logo img {
+    height: 40px;
+    width: auto;
+    display: block;
 }
 
 .nav-links {
@@ -31,6 +44,7 @@ h1, h2, h3, h4, h5, h6 {
     gap: 1em;
     margin: 0;
     padding: 0;
+    align-items: center;
 }
 
 .nav-links a {
