@@ -23,3 +23,20 @@ const navToggle = document.getElementById('nav-toggle');
 if (navToggle) {
     navToggle.addEventListener('click', toggleNav);
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    const servicesData = [
+        { title: 'Web Development', description: 'Modern and responsive websites.' },
+        { title: 'UI/UX Design', description: 'Intuitive and engaging designs.' },
+        { title: 'Consulting', description: 'Expert guidance for your projects.' }
+    ];
+    const servicesSection = document.querySelector('.services');
+    if (servicesSection) {
+        servicesData.forEach(service => {
+            const article = document.createElement('article');
+            article.className = 'card';
+            article.innerHTML = `<h3>${service.title}</h3><p>${service.description}</p>`;
+            servicesSection.appendChild(article);
+        });
+    }
+});
