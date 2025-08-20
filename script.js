@@ -120,6 +120,60 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    const portfolioData = [
+        {
+            img: 'https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=crop&w=600&q=80',
+            title: 'Restored Antique Book',
+            description: 'Full restoration of a 19th-century volume.'
+        },
+        {
+            img: 'https://images.unsplash.com/photo-1528209390973-5a63a78f9368?auto=format&fit=crop&w=600&q=80',
+            title: 'Custom Leather Journal',
+            description: 'Hand-stitched leather-bound journal.'
+        },
+        {
+            img: 'https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&w=600&q=80',
+            title: 'Limited Edition Binding',
+            description: 'Small-batch artisan book covers.'
+        }
+    ];
+    const portfolioGrid = document.querySelector('.portfolio-grid');
+    if (portfolioGrid) {
+        portfolioData.forEach(project => {
+            const article = document.createElement('article');
+            article.className = 'card';
+            article.innerHTML = `<img src="${project.img}" alt="${project.title}" loading="lazy"><h3>${project.title}</h3><p>${project.description}</p>`;
+            portfolioGrid.appendChild(article);
+        });
+    }
+
+    const blogData = [
+        {
+            img: 'https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=600&q=80',
+            title: 'The Art of Book Restoration',
+            description: 'A behind-the-scenes look at bringing books back to life.'
+        },
+        {
+            img: 'https://images.unsplash.com/photo-1509021436665-8f07dbf5bf1d?auto=format&fit=crop&w=600&q=80',
+            title: 'Choosing the Right Paper',
+            description: 'Tips for selecting paper for your project.'
+        },
+        {
+            img: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=600&q=80',
+            title: 'Binding Trends 2025',
+            description: 'What’s new in the world of bookbinding.'
+        }
+    ];
+    const blogGrid = document.querySelector('.blog-grid');
+    if (blogGrid) {
+        blogData.forEach(post => {
+            const article = document.createElement('article');
+            article.className = 'card';
+            article.innerHTML = `<img src="${post.img}" alt="${post.title}" loading="lazy"><h3>${post.title}</h3><p>${post.description}</p>`;
+            blogGrid.appendChild(article);
+        });
+    }
+
     const testimonials = document.querySelectorAll('#testimonials .testimonial');
     const nextBtn = document.getElementById('next-testimonial');
     const prevBtn = document.getElementById('prev-testimonial');
