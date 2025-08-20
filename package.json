@@ -1,0 +1,21 @@
+{
+  "name": "baayno-website",
+  "version": "1.0.0",
+  "description": "Website for Baayno",
+  "main": "script.js",
+  "scripts": {
+    "build": "npm run minify-css && npm run minify-js && npm run optimize-images",
+    "minify-css": "cleancss -o style.min.css style.css",
+    "minify-js": "terser script.js -c -m -o script.min.js",
+    "optimize-images": "svgo logo.svg"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "clean-css-cli": "^5.6.3",
+    "svgo": "^4.0.0",
+    "terser": "^5.43.1"
+  }
+}
