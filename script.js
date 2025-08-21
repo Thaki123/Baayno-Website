@@ -73,52 +73,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.querySelectorAll('section').forEach(section => observer.observe(section));
 
-    const servicesData = [
-        {
-            icon: '📚',
-            title: 'Hardcover Binding',
-            description: 'Durable covers for premium books.'
-        },
-        {
-            icon: '📘',
-            title: 'Perfect/PUR Binding',
-            description: 'Clean, professional softcover books.'
-        },
-        {
-            icon: '🛠️',
-            title: 'Restoration & Repair',
-            description: 'Give cherished books a new life.'
-        },
-        {
-            icon: '✨',
-            title: 'Foil & Embossing',
-            description: 'Custom finishes that stand out.'
-        },
-        {
-            icon: '🧪',
-            title: 'Short-Run Prototyping',
-            description: 'Test editions without large commitments.'
-        },
-        {
-            icon: '🏭',
-            title: 'Industrial Finishing',
-            description: 'High-volume finishing for publishers.'
-        }
-    ];
-    const servicesSection = document.getElementById('services');
-    if (servicesSection) {
-        servicesData.forEach(service => {
-            const article = document.createElement('article');
-            article.className = 'card';
-            let content = '';
-            if (service.icon) {
-                content += `<div class="icon">${service.icon}</div>`;
+    fetch('data/company.json')
+        .then(response => response.json())
+        .then(data => {
+            const servicesSection = document.getElementById('services');
+            if (servicesSection && Array.isArray(data.services)) {
+                data.services.forEach(service => {
+                    const article = document.createElement('article');
+                    article.className = 'card';
+                    let content = '';
+                    if (service.icon) {
+                        content += `<div class="icon">${service.icon}</div>`;
+                    }
+                    content += `<h3>${service.title}</h3><p>${service.description}</p>`;
+                    article.innerHTML = content;
+                    servicesSection.appendChild(article);
+                });
             }
-            content += `<h3>${service.title}</h3><p>${service.description}</p>`;
-            article.innerHTML = content;
-            servicesSection.appendChild(article);
-        });
-    }
+
+            const addressEl = document.getElementById('company-address');
+            if (addressEl && data.address) {
+                addressEl.textContent = data.address;
+            }
+
+            const phonesEl = document.getElementById('company-phones');
+            if (phonesEl && Array.isArray(data.phones)) {
+                phonesEl.innerHTML = data.phones.map(phone => `<a href="tel:${phone}">${phone}</a>`).join(', ');
+            }
+        })
+        .catch(err => console.error('Failed to load company data', err));
 
     const portfolioData = [
         {
