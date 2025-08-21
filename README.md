@@ -67,4 +67,8 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/b
 4. **Server hosting (e.g., Vercel/Netlify)**
 
    - Remove the `output: 'export'` setting if previously added.
-   - Deploy with the provider's Next.js integration or run `npm run start` after `npm run build`.
+ - Deploy with the provider's Next.js integration or run `npm run start` after `npm run build`.
+
+## Headless CMS Integration
+
+This project stores blog posts as Markdown files in `content/blog/`, but you can optionally integrate a headless CMS such as [Sanity](https://www.sanity.io/) or [Contentful](https://www.contentful.com/) for authoring. Configure your chosen CMS to deliver blog content and replace the filesystem utilities in `lib/posts.js` with API calls to fetch posts at build time.
