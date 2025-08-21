@@ -1,6 +1,12 @@
 import Head from 'next/head';
 
-export default function SEO({ title, description, canonical }) {
+interface SEOProps {
+  title?: string;
+  description?: string;
+  canonical?: string;
+}
+
+export default function SEO({ title, description, canonical }: SEOProps) {
   return (
     <Head>
       {title && <title>{title}</title>}

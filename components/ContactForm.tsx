@@ -1,18 +1,30 @@
 import { useState } from 'react';
 
+interface FormState {
+  name: string;
+  email: string;
+  message: string;
+}
+
+interface ErrorState {
+  name?: string;
+  email?: string;
+  message?: string;
+}
+
 export default function ContactForm() {
-  const [form, setForm] = useState({ name: '', email: '', message: '' });
-  const [errors, setErrors] = useState({});
+  const [form, setForm] = useState<FormState>({ name: '', email: '', message: '' });
+  const [errors, setErrors] = useState<ErrorState>({});
   const [success, setSuccess] = useState('');
   const [submitError, setSubmitError] = useState('');
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
-    const newErrors = {};
+    const newErrors: ErrorState = {};
     if (!form.name.trim()) newErrors.name = 'Name is required.';
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!form.email.trim()) newErrors.email = 'Email is required.';
@@ -26,7 +38,7 @@ export default function ContactForm() {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(form),
         });
-        const data = await res.json();
+        const data = await res.json() as { message?: string; error?: string };
         if (res.ok) {
           setSuccess(data.message || 'Thank you for your message!');
           setSubmitError('');
@@ -65,4 +77,3 @@ export default function ContactForm() {
     </form>
   );
 }
-

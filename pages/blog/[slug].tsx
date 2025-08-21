@@ -1,9 +1,21 @@
+import type { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
 import Layout from '@/components/Layout';
 import { getAllPostSlugs, getPostData } from '@/lib/posts';
 
-export default function BlogPost({ post }) {
+interface Post {
+  slug: string;
+  title: string;
+  content: string;
+  image?: string;
+}
+
+interface BlogPostProps {
+  post: Post;
+}
+
+export default function BlogPost({ post }: BlogPostProps) {
   return (
     <Layout>
       <Head>
@@ -26,20 +38,20 @@ export default function BlogPost({ post }) {
   );
 }
 
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths = async () => {
   const slugs = getAllPostSlugs();
   const paths = slugs.map((slug) => ({ params: { slug } }));
   return {
     paths,
     fallback: false,
   };
-}
+};
 
-export async function getStaticProps({ params }) {
-  const post = getPostData(params.slug);
+export const getStaticProps: GetStaticProps<BlogPostProps, { slug: string }> = async ({ params }) => {
+  const post = getPostData(params!.slug) as Post;
   return {
     props: {
       post,
     },
   };
-}
+};

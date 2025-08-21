@@ -4,9 +4,9 @@ import { useRouter } from 'next/router';
 import Image from 'next/image';
 
 export default function Navbar() {
-  const [open, setOpen] = useState(false);
-  const toggle = () => setOpen(!open);
-  const close = () => setOpen(false);
+  const [open, setOpen] = useState<boolean>(false);
+  const toggle = (): void => setOpen(!open);
+  const close = (): void => setOpen(false);
   const router = useRouter();
   return (
     <header className="navbar">

@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "tsc && next build",
     "start": "next start",
     "lint": "eslint",
     "test": "npm run lint"
@@ -20,7 +20,10 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@types/nodemailer": "^7.0.1",
+    "@types/react": "^19.1.10",
     "eslint": "^9",
-    "eslint-config-next": "15.5.0"
+    "eslint-config-next": "15.5.0",
+    "typescript": "^5.9.2"
   }
 }

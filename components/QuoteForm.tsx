@@ -1,18 +1,34 @@
 import { useState } from 'react';
 
+interface QuoteFormState {
+  name: string;
+  email: string;
+  bookType: string;
+  quantity: string;
+  notes: string;
+}
+
+interface ErrorState {
+  name?: string;
+  email?: string;
+  bookType?: string;
+  quantity?: string;
+  notes?: string;
+}
+
 export default function QuoteForm() {
-  const [form, setForm] = useState({ name: '', email: '', bookType: '', quantity: '', notes: '' });
-  const [errors, setErrors] = useState({});
+  const [form, setForm] = useState<QuoteFormState>({ name: '', email: '', bookType: '', quantity: '', notes: '' });
+  const [errors, setErrors] = useState<ErrorState>({});
   const [success, setSuccess] = useState('');
   const [submitError, setSubmitError] = useState('');
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>): void => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
-    const newErrors = {};
+    const newErrors: ErrorState = {};
     if (!form.name.trim()) newErrors.name = 'Name is required.';
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!form.email.trim()) newErrors.email = 'Email is required.';
@@ -27,7 +43,7 @@ export default function QuoteForm() {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(form),
         });
-        const data = await res.json();
+        const data = await res.json() as { message?: string; error?: string };
         if (res.ok) {
           setSuccess(data.message || 'Quote request sent!');
           setSubmitError('');
@@ -86,4 +102,3 @@ export default function QuoteForm() {
     </section>
   );
 }
-
