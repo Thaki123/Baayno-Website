@@ -1,15 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import nodemailer from 'nodemailer';
-
-const transporter = nodemailer.createTransport({
-  host: process.env.SMTP_HOST,
-  port: parseInt(process.env.SMTP_PORT ?? '0', 10) || 587,
-  secure: parseInt(process.env.SMTP_PORT ?? '0', 10) === 465,
-  auth: {
-    user: process.env.SMTP_USER,
-    pass: process.env.SMTP_PASS,
-  },
-});
+import getTransporter from '../../lib/mailer';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse): Promise<void> {
   if (req.method !== 'POST') {
@@ -21,6 +11,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   const { name, email, message } = req.body as { name: string; email: string; message: string };
 
   try {
+    const transporter = getTransporter();
     await transporter.sendMail({
       from: process.env.SMTP_FROM,
       to: process.env.SMTP_TO,
