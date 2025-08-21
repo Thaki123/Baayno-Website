@@ -6,7 +6,10 @@ const nextConfig = {
   reactStrictMode: true,
   output: 'export',
   trailingSlash: true,
-  images: { unoptimized: true },
+  images: {
+    unoptimized: true,
+    domains: ['images.unsplash.com'],
+  },
   basePath: isProd ? '/Baayno-Website' : undefined,
   assetPrefix: isProd ? '/Baayno-Website/' : undefined,
 };

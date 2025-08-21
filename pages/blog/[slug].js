@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Image from 'next/image';
 import Layout from '@/components/Layout';
 import { getAllPostSlugs, getPostData } from '@/lib/posts';
 
@@ -11,7 +12,13 @@ export default function BlogPost({ post }) {
       <article className="container">
         <h1>{post.title}</h1>
         {post.image && (
-          <img src={post.image} alt={post.title} />
+          <Image
+            src={post.image}
+            alt={post.title}
+            width={600}
+            height={400}
+            style={{ width: '100%', height: 'auto' }}
+          />
         )}
         <div dangerouslySetInnerHTML={{ __html: post.content }} />
       </article>

@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 const portfolioData = [
   {
     img: 'https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=crop&w=600&q=80',
@@ -23,7 +25,13 @@ export default function Portfolio() {
       <div className="portfolio-grid">
         {portfolioData.map((item, idx) => (
           <article key={idx} className="card">
-            <img src={item.img} alt={item.title} loading="lazy" />
+            <Image
+              src={item.img}
+              alt={item.title}
+              width={600}
+              height={400}
+              style={{ width: '100%', height: 'auto' }}
+            />
             <h3>{item.title}</h3>
             <p>{item.description}</p>
           </article>

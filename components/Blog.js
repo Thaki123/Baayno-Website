@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Blog({ posts = [] }) {
   return (
@@ -8,7 +9,13 @@ export default function Blog({ posts = [] }) {
         {posts.map((post) => (
           <article key={post.slug} className="card">
             {post.image && (
-              <img src={post.image} alt={post.title} loading="lazy" />
+              <Image
+                src={post.image}
+                alt={post.title}
+                width={600}
+                height={400}
+                style={{ width: '100%', height: 'auto' }}
+              />
             )}
             <h3>{post.title}</h3>
             <p>{post.description}</p>
