@@ -2,17 +2,10 @@ import type { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
 import Layout from '@/components/Layout';
-import { getAllPostSlugs, getPostData } from '@/lib/posts';
-
-interface Post {
-  slug: string;
-  title: string;
-  content: string;
-  image?: string;
-}
+import { getAllPostSlugs, getPostData, type PostData } from '@/lib/posts';
 
 interface BlogPostProps {
-  post: Post;
+  post: PostData;
 }
 
 export default function BlogPost({ post }: BlogPostProps) {
@@ -39,7 +32,7 @@ export default function BlogPost({ post }: BlogPostProps) {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const slugs = getAllPostSlugs();
+  const slugs = await getAllPostSlugs();
   const paths = slugs.map((slug) => ({ params: { slug } }));
   return {
     paths,
@@ -48,7 +41,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps<BlogPostProps, { slug: string }> = async ({ params }) => {
-  const post = getPostData(params!.slug) as Post;
+  const post = await getPostData(params!.slug);
   return {
     props: {
       post,
