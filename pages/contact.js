@@ -1,7 +1,7 @@
-import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import Layout from '@/components/Layout';
 import ContactForm from '@/components/ContactForm';
+import SEO from '@/components/SEO';
 
 export default function ContactPage() {
   const [info, setInfo] = useState({ address: '', phones: [] });
@@ -15,9 +15,7 @@ export default function ContactPage() {
 
   return (
     <Layout>
-      <Head>
-        <title>Contact - Baayno</title>
-      </Head>
+      <SEO title="Contact - Baayno" canonical="https://www.baayno.com/contact" />
       <section id="contact" className="contact">
         <div className="container">
           <h2 className="heading-font">Contact Us</h2>

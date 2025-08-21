@@ -1,13 +1,14 @@
-import Head from 'next/head';
 import Layout from '@/components/Layout';
 import Portfolio from '@/components/Portfolio';
+import SEO from '@/components/SEO';
 
 export default function PortfolioPage() {
   return (
     <Layout>
-      <Head>
-        <title>Portfolio - Baayno</title>
-      </Head>
+      <SEO
+        title="Portfolio - Baayno"
+        canonical="https://www.baayno.com/portfolio"
+      />
       <Portfolio />
     </Layout>
   );
