@@ -71,7 +71,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/b
 
 ## Headless CMS Integration
 
-This project stores blog posts as Markdown files in `content/blog/`, but you can optionally integrate a headless CMS such as [Sanity](https://www.sanity.io/) or [Contentful](https://www.contentful.com/) for authoring. Configure your chosen CMS to deliver blog content and replace the filesystem utilities in `lib/posts.js` with API calls to fetch posts at build time.
+This project stores blog posts as Markdown files in `content/blog/`, but you can optionally integrate a headless CMS such as [Sanity](https://www.sanity.io/) or [Contentful](https://www.contentful.com/) for authoring. Configure your chosen CMS to deliver blog content and replace the filesystem utilities in `lib/posts.ts` with API calls to fetch posts at build time.
 
 ## Offline Support & Service Worker
 

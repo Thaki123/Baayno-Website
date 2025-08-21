@@ -1,15 +1,9 @@
 import Link from 'next/link';
 import Image from 'next/image';
-
-interface Post {
-  slug: string;
-  title: string;
-  description: string;
-  image?: string;
-}
+import type { PostMeta } from '@/lib/posts';
 
 interface BlogProps {
-  posts?: Post[];
+  posts?: PostMeta[];
 }
 
 export default function Blog({ posts = [] }: BlogProps) {

@@ -2,17 +2,10 @@ import type { GetStaticProps } from 'next';
 import Layout from '@/components/Layout';
 import Blog from '@/components/Blog';
 import SEO from '@/components/SEO';
-import { getAllPosts } from '@/lib/posts';
-
-interface Post {
-  slug: string;
-  title: string;
-  description: string;
-  image?: string;
-}
+import { getAllPosts, type PostMeta } from '@/lib/posts';
 
 interface BlogPageProps {
-  posts: Post[];
+  posts: PostMeta[];
 }
 
 export default function BlogPage({ posts }: BlogPageProps) {
@@ -28,7 +21,7 @@ export default function BlogPage({ posts }: BlogPageProps) {
 }
 
 export const getStaticProps: GetStaticProps<BlogPageProps> = async () => {
-  const posts = getAllPosts() as Post[];
+  const posts = await getAllPosts();
   return {
     props: {
       posts,
