@@ -38,3 +38,29 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+
+## Production Build and GitHub Pages Deployment
+
+1. **Install dependencies** (Node 18+)
+
+   ```bash
+   npm install
+   ```
+
+2. **Create a production build**
+
+   ```bash
+   npm run build
+   ```
+
+3. **Static hosting (e.g., GitHub Pages)**
+
+   - The repo is preconfigured with `output: 'export'`, `basePath`, and `assetPrefix` for `Baayno-Website`.
+   - Run `npm run build`; an `out/` directory containing `index.html` and assets will be created.
+   - Deploy the contents of `out/` as your site root and ensure the host points to `out/index.html`.
+   - If you fork or rename the repository, update `basePath` and `assetPrefix` in `next.config.mjs` to match the new repo name.
+
+4. **Server hosting (e.g., Vercel/Netlify)**
+
+   - Remove the `output: 'export'` setting if previously added.
+   - Deploy with the provider's Next.js integration or run `npm run start` after `npm run build`.
