@@ -4,12 +4,13 @@ export default function QuoteForm() {
   const [form, setForm] = useState({ name: '', email: '', bookType: '', quantity: '', notes: '' });
   const [errors, setErrors] = useState({});
   const [success, setSuccess] = useState('');
+  const [submitError, setSubmitError] = useState('');
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const newErrors = {};
     if (!form.name.trim()) newErrors.name = 'Name is required.';
@@ -20,9 +21,26 @@ export default function QuoteForm() {
     if (!form.quantity.trim() || parseInt(form.quantity, 10) <= 0) newErrors.quantity = 'Enter a valid quantity.';
     setErrors(newErrors);
     if (Object.keys(newErrors).length === 0) {
-      setSuccess('Quote request sent!');
-      setForm({ name: '', email: '', bookType: '', quantity: '', notes: '' });
-      setTimeout(() => setSuccess(''), 5000);
+      try {
+        const res = await fetch('/api/quote', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(form),
+        });
+        const data = await res.json();
+        if (res.ok) {
+          setSuccess(data.message || 'Quote request sent!');
+          setSubmitError('');
+          setForm({ name: '', email: '', bookType: '', quantity: '', notes: '' });
+          setTimeout(() => setSuccess(''), 5000);
+        } else {
+          setSubmitError(data.error || 'Failed to send quote request.');
+          setSuccess('');
+        }
+      } catch {
+        setSubmitError('Failed to send quote request.');
+        setSuccess('');
+      }
     }
   };
 
@@ -62,8 +80,10 @@ export default function QuoteForm() {
           </div>
           <button type="submit">Submit</button>
           {success && <span className="success-message">{success}</span>}
+          {submitError && <span className="error-message">{submitError}</span>}
         </form>
       </div>
     </section>
   );
 }
+

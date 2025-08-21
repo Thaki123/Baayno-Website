@@ -3,12 +3,14 @@ import { useState } from 'react';
 export default function ContactForm() {
   const [form, setForm] = useState({ name: '', email: '', message: '' });
   const [errors, setErrors] = useState({});
+  const [success, setSuccess] = useState('');
+  const [submitError, setSubmitError] = useState('');
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const newErrors = {};
     if (!form.name.trim()) newErrors.name = 'Name is required.';
@@ -18,8 +20,25 @@ export default function ContactForm() {
     if (!form.message.trim()) newErrors.message = 'Message is required.';
     setErrors(newErrors);
     if (Object.keys(newErrors).length === 0) {
-      alert('Thank you for your message!');
-      setForm({ name: '', email: '', message: '' });
+      try {
+        const res = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(form),
+        });
+        const data = await res.json();
+        if (res.ok) {
+          setSuccess(data.message || 'Thank you for your message!');
+          setSubmitError('');
+          setForm({ name: '', email: '', message: '' });
+        } else {
+          setSubmitError(data.error || 'Failed to send message.');
+          setSuccess('');
+        }
+      } catch {
+        setSubmitError('Failed to send message.');
+        setSuccess('');
+      }
     }
   };
 
@@ -41,6 +60,9 @@ export default function ContactForm() {
         {errors.message && <span id="message-error" className="error-message">{errors.message}</span>}
       </div>
       <button type="submit">Send</button>
+      {success && <span className="success-message">{success}</span>}
+      {submitError && <span className="error-message">{submitError}</span>}
     </form>
   );
 }
+
