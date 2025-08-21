@@ -60,21 +60,41 @@ export default function ContactForm() {
       <div className="form-group">
         <label htmlFor="name">Name</label>
         <input type="text" id="name" name="name" value={form.name} onChange={handleChange} />
-        {errors.name && <span id="name-error" className="error-message">{errors.name}</span>}
+        {errors.name && (
+          <span id="name-error" role="alert" className="error-message">
+            {errors.name}
+          </span>
+        )}
       </div>
       <div className="form-group">
         <label htmlFor="email">Email</label>
         <input type="email" id="email" name="email" value={form.email} onChange={handleChange} />
-        {errors.email && <span id="email-error" className="error-message">{errors.email}</span>}
+        {errors.email && (
+          <span id="email-error" role="alert" className="error-message">
+            {errors.email}
+          </span>
+        )}
       </div>
       <div className="form-group">
         <label htmlFor="message">Message</label>
         <textarea id="message" name="message" value={form.message} onChange={handleChange}></textarea>
-        {errors.message && <span id="message-error" className="error-message">{errors.message}</span>}
+        {errors.message && (
+          <span id="message-error" role="alert" className="error-message">
+            {errors.message}
+          </span>
+        )}
       </div>
       <button type="submit" className="btn btn-primary">Send</button>
-      {success && <span className="success-message">{success}</span>}
-      {submitError && <span className="error-message">{submitError}</span>}
+      {success && (
+        <span className="success-message" role="status" aria-live="polite">
+          {success}
+        </span>
+      )}
+      {submitError && (
+        <span className="error-message" role="alert" aria-live="polite">
+          {submitError}
+        </span>
+      )}
     </form>
   );
 }

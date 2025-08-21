@@ -69,12 +69,20 @@ export default function QuoteForm() {
           <div className="form-group">
             <label htmlFor="quote-name">Name</label>
             <input type="text" id="quote-name" name="name" value={form.name} onChange={handleChange} />
-            {errors.name && <span className="error-message">{errors.name}</span>}
+            {errors.name && (
+              <span className="error-message" role="alert">
+                {errors.name}
+              </span>
+            )}
           </div>
           <div className="form-group">
             <label htmlFor="quote-email">Email</label>
             <input type="email" id="quote-email" name="email" value={form.email} onChange={handleChange} />
-            {errors.email && <span className="error-message">{errors.email}</span>}
+            {errors.email && (
+              <span className="error-message" role="alert">
+                {errors.email}
+              </span>
+            )}
           </div>
           <div className="form-group">
             <label htmlFor="book-type">Book Type</label>
@@ -84,20 +92,36 @@ export default function QuoteForm() {
               <option value="paperback">Paperback</option>
               <option value="leather">Leather</option>
             </select>
-            {errors.bookType && <span className="error-message">{errors.bookType}</span>}
+            {errors.bookType && (
+              <span className="error-message" role="alert">
+                {errors.bookType}
+              </span>
+            )}
           </div>
           <div className="form-group">
             <label htmlFor="quantity">Quantity</label>
             <input type="number" id="quantity" name="quantity" min="1" value={form.quantity} onChange={handleChange} />
-            {errors.quantity && <span className="error-message">{errors.quantity}</span>}
+            {errors.quantity && (
+              <span className="error-message" role="alert">
+                {errors.quantity}
+              </span>
+            )}
           </div>
           <div className="form-group">
             <label htmlFor="quote-notes">Notes</label>
             <textarea id="quote-notes" name="notes" value={form.notes} onChange={handleChange}></textarea>
           </div>
           <button type="submit" className="btn btn-primary">Submit</button>
-          {success && <span className="success-message">{success}</span>}
-          {submitError && <span className="error-message">{submitError}</span>}
+          {success && (
+            <span className="success-message" role="status" aria-live="polite">
+              {success}
+            </span>
+          )}
+          {submitError && (
+            <span className="error-message" role="alert" aria-live="polite">
+              {submitError}
+            </span>
+          )}
         </form>
       </div>
     </section>
