@@ -1,11 +1,13 @@
 import { useEffect, ReactNode } from 'react';
 import Navbar from './Navbar';
+import useTranslation from 'next-translate/useTranslation';
 
 interface LayoutProps {
   children: ReactNode;
 }
 
 export default function Layout({ children }: LayoutProps) {
+  const { t } = useTranslation();
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
@@ -35,7 +37,7 @@ export default function Layout({ children }: LayoutProps) {
       </div>
       {children}
       <footer>
-        <p>&copy; 2025 Baayno Website</p>
+        <p>{t('layout.footer')}</p>
       </footer>
     </>
   );

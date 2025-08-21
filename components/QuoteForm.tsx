@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import useTranslation from 'next-translate/useTranslation';
 
 interface QuoteFormState {
   name: string;
@@ -17,6 +18,7 @@ interface ErrorState {
 }
 
 export default function QuoteForm() {
+  const { t } = useTranslation();
   const [form, setForm] = useState<QuoteFormState>({ name: '', email: '', bookType: '', quantity: '', notes: '' });
   const [errors, setErrors] = useState<ErrorState>({});
   const [success, setSuccess] = useState('');
@@ -29,12 +31,12 @@ export default function QuoteForm() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
     const newErrors: ErrorState = {};
-    if (!form.name.trim()) newErrors.name = 'Name is required.';
+    if (!form.name.trim()) newErrors.name = t('quote.nameRequired');
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!form.email.trim()) newErrors.email = 'Email is required.';
-    else if (!emailPattern.test(form.email.trim())) newErrors.email = 'Enter a valid email.';
-    if (!form.bookType.trim()) newErrors.bookType = 'Book type is required.';
-    if (!form.quantity.trim() || parseInt(form.quantity, 10) <= 0) newErrors.quantity = 'Enter a valid quantity.';
+    if (!form.email.trim()) newErrors.email = t('quote.emailRequired');
+    else if (!emailPattern.test(form.email.trim())) newErrors.email = t('quote.emailInvalid');
+    if (!form.bookType.trim()) newErrors.bookType = t('quote.bookTypeRequired');
+    if (!form.quantity.trim() || parseInt(form.quantity, 10) <= 0) newErrors.quantity = t('quote.quantityInvalid');
     setErrors(newErrors);
     if (Object.keys(newErrors).length === 0) {
       try {
@@ -45,16 +47,16 @@ export default function QuoteForm() {
         });
         const data = await res.json() as { message?: string; error?: string };
         if (res.ok) {
-          setSuccess(data.message || 'Quote request sent!');
+          setSuccess(data.message || t('quote.success'));
           setSubmitError('');
           setForm({ name: '', email: '', bookType: '', quantity: '', notes: '' });
           setTimeout(() => setSuccess(''), 5000);
         } else {
-          setSubmitError(data.error || 'Failed to send quote request.');
+          setSubmitError(data.error || t('quote.error'));
           setSuccess('');
         }
       } catch {
-        setSubmitError('Failed to send quote request.');
+        setSubmitError(t('quote.error'));
         setSuccess('');
       }
     }
@@ -63,38 +65,38 @@ export default function QuoteForm() {
   return (
     <section id="quote" className="quote">
       <div className="container">
-        <h2 className="heading-font">Request a Quote</h2>
+        <h2 className="heading-font">{t('quote.title')}</h2>
         <form className="quote-form" onSubmit={handleSubmit} noValidate>
           <div className="form-group">
-            <label htmlFor="quote-name">Name</label>
+            <label htmlFor="quote-name">{t('quote.name')}</label>
             <input type="text" id="quote-name" name="name" value={form.name} onChange={handleChange} />
             {errors.name && <span className="error-message">{errors.name}</span>}
           </div>
           <div className="form-group">
-            <label htmlFor="quote-email">Email</label>
+            <label htmlFor="quote-email">{t('quote.email')}</label>
             <input type="email" id="quote-email" name="email" value={form.email} onChange={handleChange} />
             {errors.email && <span className="error-message">{errors.email}</span>}
           </div>
           <div className="form-group">
-            <label htmlFor="book-type">Book Type</label>
+            <label htmlFor="book-type">{t('quote.bookType')}</label>
             <select id="book-type" name="bookType" value={form.bookType} onChange={handleChange}>
-              <option value="">Select a type</option>
-              <option value="hardcover">Hardcover</option>
-              <option value="paperback">Paperback</option>
-              <option value="leather">Leather</option>
+              <option value="">{t('quote.selectType')}</option>
+              <option value="hardcover">{t('quote.hardcover')}</option>
+              <option value="paperback">{t('quote.paperback')}</option>
+              <option value="leather">{t('quote.leather')}</option>
             </select>
             {errors.bookType && <span className="error-message">{errors.bookType}</span>}
           </div>
           <div className="form-group">
-            <label htmlFor="quantity">Quantity</label>
+            <label htmlFor="quantity">{t('quote.quantity')}</label>
             <input type="number" id="quantity" name="quantity" min="1" value={form.quantity} onChange={handleChange} />
             {errors.quantity && <span className="error-message">{errors.quantity}</span>}
           </div>
           <div className="form-group">
-            <label htmlFor="quote-notes">Notes</label>
+            <label htmlFor="quote-notes">{t('quote.notes')}</label>
             <textarea id="quote-notes" name="notes" value={form.notes} onChange={handleChange}></textarea>
           </div>
-          <button type="submit">Submit</button>
+          <button type="submit">{t('quote.submit')}</button>
           {success && <span className="success-message">{success}</span>}
           {submitError && <span className="error-message">{submitError}</span>}
         </form>

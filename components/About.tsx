@@ -1,8 +1,11 @@
+import useTranslation from 'next-translate/useTranslation';
+
 export default function About() {
+  const { t } = useTranslation();
   return (
     <section id="about" className="about container">
-      <h2 className="heading-font">About Us</h2>
-      <p>Pioneering the market, Fouad Baayno opened his first shop in 1964 and launched the first bookbinding factory in 1972.</p>
+      <h2 className="heading-font">{t('about.title')}</h2>
+      <p>{t('about.text')}</p>
     </section>
   );
 }

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import Layout from '@/components/Layout';
 import ContactForm from '@/components/ContactForm';
 import SEO from '@/components/SEO';
+import useTranslation from 'next-translate/useTranslation';
 
 interface CompanyInfo {
   address: string;
@@ -10,6 +11,7 @@ interface CompanyInfo {
 
 export default function ContactPage() {
   const [info, setInfo] = useState<CompanyInfo>({ address: '', phones: [] });
+  const { t } = useTranslation();
 
   useEffect(() => {
     fetch('/data/company.json')
@@ -20,10 +22,10 @@ export default function ContactPage() {
 
   return (
     <Layout>
-      <SEO title="Contact - Baayno" canonical="https://www.baayno.com/contact" />
+      <SEO title={t('seo.contactTitle')} canonical="https://www.baayno.com/contact" />
       <section id="contact" className="contact">
         <div className="container">
-          <h2 className="heading-font">Contact Us</h2>
+          <h2 className="heading-font">{t('contact.title')}</h2>
           <div className="company-details">
             <p>{info.address}</p>
             <p>

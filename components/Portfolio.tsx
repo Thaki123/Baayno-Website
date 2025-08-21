@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import useTranslation from 'next-translate/useTranslation';
 
 interface PortfolioItem {
   img: string;
@@ -25,9 +26,10 @@ const portfolioData: PortfolioItem[] = [
 ];
 
 export default function Portfolio() {
+  const { t } = useTranslation();
   return (
     <section id="portfolio" className="portfolio container">
-      <h2 className="heading-font">Portfolio</h2>
+      <h2 className="heading-font">{t('portfolio.title')}</h2>
       <div className="portfolio-grid">
         {portfolioData.map((item, idx) => (
           <article key={idx} className="card">

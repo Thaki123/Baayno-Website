@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import useTranslation from 'next-translate/useTranslation';
 
 interface Post {
   slug: string;
@@ -13,9 +14,10 @@ interface BlogProps {
 }
 
 export default function Blog({ posts = [] }: BlogProps) {
+  const { t } = useTranslation();
   return (
     <section id="blog" className="blog container">
-      <h2 className="heading-font">Blog</h2>
+      <h2 className="heading-font">{t('blog.title')}</h2>
       <div className="blog-grid">
         {posts.map((post) => (
           <article key={post.slug} className="card">
@@ -30,7 +32,7 @@ export default function Blog({ posts = [] }: BlogProps) {
             )}
             <h3>{post.title}</h3>
             <p>{post.description}</p>
-            <Link href={`/blog/${post.slug}`}>Read more</Link>
+            <Link href={`/blog/${post.slug}`}>{t('blog.readMore')}</Link>
           </article>
         ))}
       </div>

@@ -1,0 +1,74 @@
+{
+  "navbar": {
+    "home": "Accueil",
+    "services": "Services",
+    "portfolio": "Portfolio",
+    "blog": "Blog",
+    "contact": "Contact",
+    "logoAlt": "Logo de l'atelier Fouad Baayno",
+    "language": "Langue"
+  },
+  "hero": {
+    "title": "Reliure artisanale",
+    "subtitle": "Reliure et finition de précision",
+    "cta": "Demander un devis"
+  },
+  "about": {
+    "title": "À propos de nous",
+    "text": "Pionnier du marché, Fouad Baayno a ouvert sa première boutique en 1964 et lancé la première usine de reliure en 1972."
+  },
+  "services": {
+    "title": "Services"
+  },
+  "portfolio": {
+    "title": "Portfolio"
+  },
+  "blog": {
+    "title": "Blog",
+    "readMore": "Lire la suite"
+  },
+  "contact": {
+    "title": "Contactez-nous",
+    "name": "Nom",
+    "email": "Email",
+    "message": "Message",
+    "submit": "Envoyer",
+    "success": "Merci pour votre message !",
+    "error": "Échec de l'envoi du message.",
+    "nameRequired": "Le nom est requis.",
+    "emailRequired": "L'email est requis.",
+    "emailInvalid": "Entrez un email valide.",
+    "messageRequired": "Le message est requis."
+  },
+  "quote": {
+    "title": "Demander un devis",
+    "name": "Nom",
+    "email": "Email",
+    "bookType": "Type de livre",
+    "quantity": "Quantité",
+    "notes": "Notes",
+    "selectType": "Choisissez un type",
+    "hardcover": "Couverture rigide",
+    "paperback": "Broché",
+    "leather": "Cuir",
+    "submit": "Envoyer",
+    "success": "Demande de devis envoyée !",
+    "error": "Échec de l'envoi de la demande.",
+    "nameRequired": "Le nom est requis.",
+    "emailRequired": "L'email est requis.",
+    "emailInvalid": "Entrez un email valide.",
+    "bookTypeRequired": "Le type de livre est requis.",
+    "quantityInvalid": "Entrez une quantité valide."
+  },
+  "layout": {
+    "footer": "© 2025 Site Baayno"
+  },
+  "seo": {
+    "homeTitle": "Baayno — Reliure et finition",
+    "homeDescription": "Reliure et finition de précision",
+    "servicesTitle": "Services - Baayno",
+    "portfolioTitle": "Portfolio - Baayno",
+    "blogTitle": "Blog - Baayno",
+    "contactTitle": "Contact - Baayno"
+  }
+}

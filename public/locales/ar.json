@@ -1,0 +1,74 @@
+{
+  "navbar": {
+    "home": "الرئيسية",
+    "services": "الخدمات",
+    "portfolio": "الأعمال",
+    "blog": "المدونة",
+    "contact": "اتصل بنا",
+    "logoAlt": "شعار مطبعة فؤاد بعينو",
+    "language": "اللغة"
+  },
+  "hero": {
+    "title": "تجليد كتب يدوي",
+    "subtitle": "دقة في التجليد والتشطيب",
+    "cta": "اطلب عرض سعر"
+  },
+  "about": {
+    "title": "من نحن",
+    "text": "افتتح فؤاد بعينو متجره الأول عام 1964 وأطلق أول مصنع للتجليد عام 1972."
+  },
+  "services": {
+    "title": "الخدمات"
+  },
+  "portfolio": {
+    "title": "الأعمال"
+  },
+  "blog": {
+    "title": "المدونة",
+    "readMore": "اقرأ المزيد"
+  },
+  "contact": {
+    "title": "اتصل بنا",
+    "name": "الاسم",
+    "email": "البريد الإلكتروني",
+    "message": "الرسالة",
+    "submit": "إرسال",
+    "success": "شكرًا لرسالتك!",
+    "error": "فشل في إرسال الرسالة.",
+    "nameRequired": "الاسم مطلوب.",
+    "emailRequired": "البريد الإلكتروني مطلوب.",
+    "emailInvalid": "أدخل بريدًا صحيحًا.",
+    "messageRequired": "الرسالة مطلوبة."
+  },
+  "quote": {
+    "title": "اطلب عرض سعر",
+    "name": "الاسم",
+    "email": "البريد الإلكتروني",
+    "bookType": "نوع الكتاب",
+    "quantity": "الكمية",
+    "notes": "ملاحظات",
+    "selectType": "اختر النوع",
+    "hardcover": "غلاف صلب",
+    "paperback": "غلاف ورقي",
+    "leather": "جلد",
+    "submit": "إرسال",
+    "success": "تم إرسال طلب العرض!",
+    "error": "فشل في إرسال الطلب.",
+    "nameRequired": "الاسم مطلوب.",
+    "emailRequired": "البريد الإلكتروني مطلوب.",
+    "emailInvalid": "أدخل بريدًا صحيحًا.",
+    "bookTypeRequired": "نوع الكتاب مطلوب.",
+    "quantityInvalid": "أدخل كمية صالحة."
+  },
+  "layout": {
+    "footer": "© 2025 موقع بعينو"
+  },
+  "seo": {
+    "homeTitle": "بعينو — تجليد وتشطيب الكتب",
+    "homeDescription": "دقة في التجليد والتشطيب",
+    "servicesTitle": "الخدمات - بعينو",
+    "portfolioTitle": "الأعمال - بعينو",
+    "blogTitle": "المدونة - بعينو",
+    "contactTitle": "اتصل بنا - بعينو"
+  }
+}

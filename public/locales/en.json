@@ -1,0 +1,74 @@
+{
+  "navbar": {
+    "home": "Home",
+    "services": "Services",
+    "portfolio": "Portfolio",
+    "blog": "Blog",
+    "contact": "Contact",
+    "logoAlt": "Fouad Baayno Bookbindery logo",
+    "language": "Language"
+  },
+  "hero": {
+    "title": "Handcrafted Bookbinding",
+    "subtitle": "Precision Bookbinding & Finishing",
+    "cta": "Request a Quote"
+  },
+  "about": {
+    "title": "About Us",
+    "text": "Pioneering the market, Fouad Baayno opened his first shop in 1964 and launched the first bookbinding factory in 1972."
+  },
+  "services": {
+    "title": "Services"
+  },
+  "portfolio": {
+    "title": "Portfolio"
+  },
+  "blog": {
+    "title": "Blog",
+    "readMore": "Read more"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "submit": "Send",
+    "success": "Thank you for your message!",
+    "error": "Failed to send message.",
+    "nameRequired": "Name is required.",
+    "emailRequired": "Email is required.",
+    "emailInvalid": "Enter a valid email.",
+    "messageRequired": "Message is required."
+  },
+  "quote": {
+    "title": "Request a Quote",
+    "name": "Name",
+    "email": "Email",
+    "bookType": "Book Type",
+    "quantity": "Quantity",
+    "notes": "Notes",
+    "selectType": "Select a type",
+    "hardcover": "Hardcover",
+    "paperback": "Paperback",
+    "leather": "Leather",
+    "submit": "Submit",
+    "success": "Quote request sent!",
+    "error": "Failed to send quote request.",
+    "nameRequired": "Name is required.",
+    "emailRequired": "Email is required.",
+    "emailInvalid": "Enter a valid email.",
+    "bookTypeRequired": "Book type is required.",
+    "quantityInvalid": "Enter a valid quantity."
+  },
+  "layout": {
+    "footer": "© 2025 Baayno Website"
+  },
+  "seo": {
+    "homeTitle": "Baayno — Bookbinding & Finishing",
+    "homeDescription": "Precision bookbinding & finishing",
+    "servicesTitle": "Services - Baayno",
+    "portfolioTitle": "Portfolio - Baayno",
+    "blogTitle": "Blog - Baayno",
+    "contactTitle": "Contact - Baayno"
+  }
+}

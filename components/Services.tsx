@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import useTranslation from 'next-translate/useTranslation';
 
 interface Service {
   icon?: string;
@@ -8,6 +9,7 @@ interface Service {
 
 export default function Services() {
   const [services, setServices] = useState<Service[]>([]);
+  const { t } = useTranslation();
 
   useEffect(() => {
     fetch('/data/company.json')
@@ -18,7 +20,7 @@ export default function Services() {
 
   return (
     <section id="services" className="services container">
-      <h2 className="heading-font">Services</h2>
+      <h2 className="heading-font">{t('services.title')}</h2>
       <div className="service-grid">
         {services.map((service, idx) => (
           <article key={idx} className="card">
