@@ -60,7 +60,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/b
   - `basePath: '/Baayno-Website'`
   - `assetPrefix: '/Baayno-Website/'`
   - (optional) `images: { unoptimized: true }` and `trailingSlash: true` for Pages.
-- Run `npm run build` (and `npx next export` if needed). This creates an `out/` folder with `index.html` and assets.
+- Run `npm run build`. This creates an `out/` folder with `index.html` and assets.
 - Deploy the contents of `out/` as your site root (GitHub Pages: serve `gh-pages` branch from `/`).
 - If you fork or rename the repo, update `basePath` and `assetPrefix` in `next.config.js` to match the new repo name.
 
