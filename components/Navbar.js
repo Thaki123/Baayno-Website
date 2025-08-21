@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
+import Image from 'next/image';
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -10,7 +11,12 @@ export default function Navbar() {
   return (
     <header className="navbar">
       <Link href="/" className="logo" onClick={close}>
-        <img src={`${router.basePath}/logo.svg`} alt="Fouad Baayno Bookbindery logo" loading="lazy" />
+        <Image
+          src={`${router.basePath}/logo.svg`}
+          alt="Fouad Baayno Bookbindery logo"
+          width={640}
+          height={289}
+        />
       </Link>
       <nav>
         <ul className={open ? 'nav-links open' : 'nav-links'}>
