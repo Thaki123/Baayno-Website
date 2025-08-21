@@ -1,0 +1,38 @@
+{
+  "address": "123 Beirut Street, Beirut, 0000, Lebanon",
+  "phones": [
+    "+961-1-234-567"
+  ],
+  "services": [
+    {
+      "icon": "📚",
+      "title": "Hardcover Binding",
+      "description": "Durable covers for premium books."
+    },
+    {
+      "icon": "📘",
+      "title": "Perfect/PUR Binding",
+      "description": "Clean, professional softcover books."
+    },
+    {
+      "icon": "🛠️",
+      "title": "Restoration & Repair",
+      "description": "Give cherished books a new life."
+    },
+    {
+      "icon": "✨",
+      "title": "Foil & Embossing",
+      "description": "Custom finishes that stand out."
+    },
+    {
+      "icon": "🧪",
+      "title": "Short-Run Prototyping",
+      "description": "Test editions without large commitments."
+    },
+    {
+      "icon": "🏭",
+      "title": "Industrial Finishing",
+      "description": "High-volume finishing for publishers."
+    }
+  ]
+}
