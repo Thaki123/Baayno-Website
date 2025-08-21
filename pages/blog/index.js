@@ -1,14 +1,15 @@
-import Head from 'next/head';
 import Layout from '@/components/Layout';
 import Blog from '@/components/Blog';
+import SEO from '@/components/SEO';
 import { getAllPosts } from '@/lib/posts';
 
 export default function BlogPage({ posts }) {
   return (
     <Layout>
-      <Head>
-        <title>Blog - Baayno</title>
-      </Head>
+      <SEO
+        title="Blog - Baayno"
+        canonical="https://www.baayno.com/blog"
+      />
       <Blog posts={posts} />
     </Layout>
   );

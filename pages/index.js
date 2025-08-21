@@ -1,5 +1,5 @@
-import Head from 'next/head';
 import Layout from '@/components/Layout';
+import SEO from '@/components/SEO';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
 import QuoteForm from '@/components/QuoteForm';
@@ -10,10 +10,11 @@ import Blog from '@/components/Blog';
 export default function Home() {
   return (
     <Layout>
-      <Head>
-        <title>Baayno — Bookbinding & Finishing</title>
-        <meta name="description" content="Precision bookbinding & finishing" />
-      </Head>
+      <SEO
+        title="Baayno — Bookbinding & Finishing"
+        description="Precision bookbinding & finishing"
+        canonical="https://www.baayno.com/"
+      />
       <Hero />
       <About />
       <QuoteForm />
