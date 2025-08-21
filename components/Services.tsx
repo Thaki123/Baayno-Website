@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import styles from './Services.module.css';
 
 interface Service {
   icon?: string;
@@ -17,9 +18,9 @@ export default function Services() {
   }, []);
 
   return (
-    <section id="services" className="services container">
+    <section id="services" className="container">
       <h2 className="heading-font">Services</h2>
-      <div className="service-grid">
+      <div className={styles.serviceGrid}>
         {services.map((service, idx) => (
           <article key={idx} className="card">
             {service.icon && <div className="icon">{service.icon}</div>}

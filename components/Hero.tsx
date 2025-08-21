@@ -1,3 +1,5 @@
+import styles from './Hero.module.css';
+
 export default function Hero() {
   const scrollToQuote = (): void => {
     if (typeof document !== 'undefined') {
@@ -5,8 +7,8 @@ export default function Hero() {
     }
   };
   return (
-    <section className="hero" id="hero">
-      <div className="hero-content container">
+    <section className={styles.hero} id="hero">
+      <div className={`${styles.content} container`}>
         <h1 className="heading-font">Handcrafted Bookbinding</h1>
         <p>Precision Bookbinding &amp; Finishing</p>
         <button className="btn btn-primary" onClick={scrollToQuote}>Request a Quote</button>

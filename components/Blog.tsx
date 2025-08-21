@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import styles from './Blog.module.css';
 
 interface Post {
   slug: string;
@@ -16,7 +17,7 @@ export default function Blog({ posts = [] }: BlogProps) {
   return (
     <section id="blog" className="blog container">
       <h2 className="heading-font">Blog</h2>
-      <div className="blog-grid">
+      <div className={styles.blogGrid}>
         {posts.map((post) => (
           <article key={post.slug} className="card">
             {post.image && (

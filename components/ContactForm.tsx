@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import styles from './ContactForm.module.css';
 
 interface FormState {
   name: string;
@@ -55,7 +56,7 @@ export default function ContactForm() {
   };
 
   return (
-    <form id="contact-form" className="contact-form" onSubmit={handleSubmit} noValidate>
+    <form id="contact-form" className={styles.contactForm} onSubmit={handleSubmit} noValidate>
       <div className="form-group">
         <label htmlFor="name">Name</label>
         <input type="text" id="name" name="name" value={form.name} onChange={handleChange} />
@@ -71,7 +72,7 @@ export default function ContactForm() {
         <textarea id="message" name="message" value={form.message} onChange={handleChange}></textarea>
         {errors.message && <span id="message-error" className="error-message">{errors.message}</span>}
       </div>
-      <button type="submit">Send</button>
+      <button type="submit" className="btn btn-primary">Send</button>
       {success && <span className="success-message">{success}</span>}
       {submitError && <span className="error-message">{submitError}</span>}
     </form>

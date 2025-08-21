@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import styles from './Portfolio.module.css';
 
 interface PortfolioItem {
   img: string;
@@ -28,7 +29,7 @@ export default function Portfolio() {
   return (
     <section id="portfolio" className="portfolio container">
       <h2 className="heading-font">Portfolio</h2>
-      <div className="portfolio-grid">
+      <div className={styles.portfolioGrid}>
         {portfolioData.map((item, idx) => (
           <article key={idx} className="card">
             <Image
