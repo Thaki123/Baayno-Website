@@ -1,0 +1,40 @@
+import Head from 'next/head';
+import { useEffect, useState } from 'react';
+import Layout from '@/components/Layout';
+import ContactForm from '@/components/ContactForm';
+
+export default function ContactPage() {
+  const [info, setInfo] = useState({ address: '', phones: [] });
+
+  useEffect(() => {
+    fetch('/data/company.json')
+      .then(res => res.json())
+      .then(data => setInfo({ address: data.address, phones: data.phones || [] }))
+      .catch(() => {});
+  }, []);
+
+  return (
+    <Layout>
+      <Head>
+        <title>Contact - Baayno</title>
+      </Head>
+      <section id="contact" className="contact">
+        <div className="container">
+          <h2 className="heading-font">Contact Us</h2>
+          <div className="company-details">
+            <p>{info.address}</p>
+            <p>
+              {info.phones.map((phone, idx) => (
+                <span key={phone}>
+                  {idx > 0 && ', '}
+                  <a href={`tel:${phone}`}>{phone}</a>
+                </span>
+              ))}
+            </p>
+          </div>
+          <ContactForm />
+        </div>
+      </section>
+    </Layout>
+  );
+}
