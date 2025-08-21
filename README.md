@@ -72,3 +72,17 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/b
 ## Headless CMS Integration
 
 This project stores blog posts as Markdown files in `content/blog/`, but you can optionally integrate a headless CMS such as [Sanity](https://www.sanity.io/) or [Contentful](https://www.contentful.com/) for authoring. Configure your chosen CMS to deliver blog content and replace the filesystem utilities in `lib/posts.js` with API calls to fetch posts at build time.
+
+## Offline Support & Service Worker
+
+This site uses [next-pwa](https://github.com/shadowwalker/next-pwa) for offline caching.
+
+### Testing offline
+
+1. Run `npm run build` to generate the service worker.
+2. Start a static server, e.g. `npx serve out`.
+3. Visit the site in your browser and toggle "Offline" in DevTools to confirm pages load from cache.
+
+### Refreshing the service worker
+
+After deploying a new version, hard refresh the page (Shift ↻) or use DevTools → Application → Service Workers → "Unregister" to force an update.
