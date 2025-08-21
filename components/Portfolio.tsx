@@ -1,6 +1,12 @@
 import Image from 'next/image';
 
-const portfolioData = [
+interface PortfolioItem {
+  img: string;
+  title: string;
+  description: string;
+}
+
+const portfolioData: PortfolioItem[] = [
   {
     img: 'https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=crop&w=600&q=80',
     title: 'Restored Antique Book',

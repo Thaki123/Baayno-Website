@@ -1,7 +1,18 @@
 import Link from 'next/link';
 import Image from 'next/image';
 
-export default function Blog({ posts = [] }) {
+interface Post {
+  slug: string;
+  title: string;
+  description: string;
+  image?: string;
+}
+
+interface BlogProps {
+  posts?: Post[];
+}
+
+export default function Blog({ posts = [] }: BlogProps) {
   return (
     <section id="blog" className="blog container">
       <h2 className="heading-font">Blog</h2>

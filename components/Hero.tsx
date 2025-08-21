@@ -1,5 +1,5 @@
 export default function Hero() {
-  const scrollToQuote = () => {
+  const scrollToQuote = (): void => {
     if (typeof document !== 'undefined') {
       document.getElementById('quote')?.scrollIntoView({ behavior: 'smooth' });
     }

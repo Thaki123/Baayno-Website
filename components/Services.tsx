@@ -1,12 +1,18 @@
 import { useEffect, useState } from 'react';
 
+interface Service {
+  icon?: string;
+  title: string;
+  description: string;
+}
+
 export default function Services() {
-  const [services, setServices] = useState([]);
+  const [services, setServices] = useState<Service[]>([]);
 
   useEffect(() => {
     fetch('/data/company.json')
       .then(res => res.json())
-      .then(data => setServices(data.services || []))
+      .then((data: { services?: Service[] }) => setServices(data.services || []))
       .catch(() => {});
   }, []);
 

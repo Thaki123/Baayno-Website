@@ -1,7 +1,11 @@
-import { useEffect } from 'react';
+import { useEffect, ReactNode } from 'react';
 import Navbar from './Navbar';
 
-export default function Layout({ children }) {
+interface LayoutProps {
+  children: ReactNode;
+}
+
+export default function Layout({ children }: LayoutProps) {
   useEffect(() => {
     if (typeof window === 'undefined') return;
 

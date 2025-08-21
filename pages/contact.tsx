@@ -3,13 +3,18 @@ import Layout from '@/components/Layout';
 import ContactForm from '@/components/ContactForm';
 import SEO from '@/components/SEO';
 
+interface CompanyInfo {
+  address: string;
+  phones: string[];
+}
+
 export default function ContactPage() {
-  const [info, setInfo] = useState({ address: '', phones: [] });
+  const [info, setInfo] = useState<CompanyInfo>({ address: '', phones: [] });
 
   useEffect(() => {
     fetch('/data/company.json')
       .then(res => res.json())
-      .then(data => setInfo({ address: data.address, phones: data.phones || [] }))
+      .then((data: CompanyInfo) => setInfo({ address: data.address, phones: data.phones || [] }))
       .catch(() => {});
   }, []);
 
