@@ -30,7 +30,9 @@ export default function Blog({ posts = [] }: BlogProps) {
             )}
             <h3>{post.title}</h3>
             <p>{post.description}</p>
-            <Link href={`/blog/${post.slug}`}>Read more</Link>
+            <Link href={`/blog/${post.slug}`} aria-label={`Read more about ${post.title}`}>
+              Read more
+            </Link>
           </article>
         ))}
       </div>
