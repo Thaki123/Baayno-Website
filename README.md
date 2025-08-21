@@ -86,3 +86,10 @@ This site uses [next-pwa](https://github.com/shadowwalker/next-pwa) for offline 
 ### Refreshing the service worker
 
 After deploying a new version, hard refresh the page (Shift ↻) or use DevTools → Application → Service Workers → "Unregister" to force an update.
+
+## Accessibility Guidelines
+
+- All images use descriptive `alt` text.
+- Buttons and interactive elements include clear labels via visible text or `aria-label` attributes.
+- Form inputs indicate errors with `aria-invalid` and associated messages announced using `role="alert"`.
+- Status messages use `role="status"` and `aria-live` to be read by assistive technology.

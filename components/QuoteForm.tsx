@@ -67,36 +67,96 @@ export default function QuoteForm() {
         <form className="quote-form" onSubmit={handleSubmit} noValidate>
           <div className="form-group">
             <label htmlFor="quote-name">Name</label>
-            <input type="text" id="quote-name" name="name" value={form.name} onChange={handleChange} />
-            {errors.name && <span className="error-message">{errors.name}</span>}
+            <input
+              type="text"
+              id="quote-name"
+              name="name"
+              value={form.name}
+              onChange={handleChange}
+              aria-invalid={!!errors.name}
+              aria-describedby={errors.name ? 'quote-name-error' : undefined}
+              required
+            />
+            {errors.name && (
+              <span id="quote-name-error" className="error-message" role="alert">
+                {errors.name}
+              </span>
+            )}
           </div>
           <div className="form-group">
             <label htmlFor="quote-email">Email</label>
-            <input type="email" id="quote-email" name="email" value={form.email} onChange={handleChange} />
-            {errors.email && <span className="error-message">{errors.email}</span>}
+            <input
+              type="email"
+              id="quote-email"
+              name="email"
+              value={form.email}
+              onChange={handleChange}
+              aria-invalid={!!errors.email}
+              aria-describedby={errors.email ? 'quote-email-error' : undefined}
+              required
+            />
+            {errors.email && (
+              <span id="quote-email-error" className="error-message" role="alert">
+                {errors.email}
+              </span>
+            )}
           </div>
           <div className="form-group">
             <label htmlFor="book-type">Book Type</label>
-            <select id="book-type" name="bookType" value={form.bookType} onChange={handleChange}>
+            <select
+              id="book-type"
+              name="bookType"
+              value={form.bookType}
+              onChange={handleChange}
+              aria-invalid={!!errors.bookType}
+              aria-describedby={errors.bookType ? 'book-type-error' : undefined}
+              required
+            >
               <option value="">Select a type</option>
               <option value="hardcover">Hardcover</option>
               <option value="paperback">Paperback</option>
               <option value="leather">Leather</option>
             </select>
-            {errors.bookType && <span className="error-message">{errors.bookType}</span>}
+            {errors.bookType && (
+              <span id="book-type-error" className="error-message" role="alert">
+                {errors.bookType}
+              </span>
+            )}
           </div>
           <div className="form-group">
             <label htmlFor="quantity">Quantity</label>
-            <input type="number" id="quantity" name="quantity" min="1" value={form.quantity} onChange={handleChange} />
-            {errors.quantity && <span className="error-message">{errors.quantity}</span>}
+            <input
+              type="number"
+              id="quantity"
+              name="quantity"
+              min="1"
+              value={form.quantity}
+              onChange={handleChange}
+              aria-invalid={!!errors.quantity}
+              aria-describedby={errors.quantity ? 'quantity-error' : undefined}
+              required
+            />
+            {errors.quantity && (
+              <span id="quantity-error" className="error-message" role="alert">
+                {errors.quantity}
+              </span>
+            )}
           </div>
           <div className="form-group">
             <label htmlFor="quote-notes">Notes</label>
             <textarea id="quote-notes" name="notes" value={form.notes} onChange={handleChange}></textarea>
           </div>
-          <button type="submit">Submit</button>
-          {success && <span className="success-message">{success}</span>}
-          {submitError && <span className="error-message">{submitError}</span>}
+          <button type="submit" aria-label="Submit quote request">Submit</button>
+          {success && (
+            <span className="success-message" role="status" aria-live="polite">
+              {success}
+            </span>
+          )}
+          {submitError && (
+            <span className="error-message" role="alert">
+              {submitError}
+            </span>
+          )}
         </form>
       </div>
     </section>

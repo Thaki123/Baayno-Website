@@ -58,22 +58,68 @@ export default function ContactForm() {
     <form id="contact-form" className="contact-form" onSubmit={handleSubmit} noValidate>
       <div className="form-group">
         <label htmlFor="name">Name</label>
-        <input type="text" id="name" name="name" value={form.name} onChange={handleChange} />
-        {errors.name && <span id="name-error" className="error-message">{errors.name}</span>}
+        <input
+          type="text"
+          id="name"
+          name="name"
+          value={form.name}
+          onChange={handleChange}
+          aria-invalid={!!errors.name}
+          aria-describedby={errors.name ? 'name-error' : undefined}
+          required
+        />
+        {errors.name && (
+          <span id="name-error" className="error-message" role="alert">
+            {errors.name}
+          </span>
+        )}
       </div>
       <div className="form-group">
         <label htmlFor="email">Email</label>
-        <input type="email" id="email" name="email" value={form.email} onChange={handleChange} />
-        {errors.email && <span id="email-error" className="error-message">{errors.email}</span>}
+        <input
+          type="email"
+          id="email"
+          name="email"
+          value={form.email}
+          onChange={handleChange}
+          aria-invalid={!!errors.email}
+          aria-describedby={errors.email ? 'email-error' : undefined}
+          required
+        />
+        {errors.email && (
+          <span id="email-error" className="error-message" role="alert">
+            {errors.email}
+          </span>
+        )}
       </div>
       <div className="form-group">
         <label htmlFor="message">Message</label>
-        <textarea id="message" name="message" value={form.message} onChange={handleChange}></textarea>
-        {errors.message && <span id="message-error" className="error-message">{errors.message}</span>}
+        <textarea
+          id="message"
+          name="message"
+          value={form.message}
+          onChange={handleChange}
+          aria-invalid={!!errors.message}
+          aria-describedby={errors.message ? 'message-error' : undefined}
+          required
+        ></textarea>
+        {errors.message && (
+          <span id="message-error" className="error-message" role="alert">
+            {errors.message}
+          </span>
+        )}
       </div>
-      <button type="submit">Send</button>
-      {success && <span className="success-message">{success}</span>}
-      {submitError && <span className="error-message">{submitError}</span>}
+      <button type="submit" aria-label="Send message">Send</button>
+      {success && (
+        <span className="success-message" role="status" aria-live="polite">
+          {success}
+        </span>
+      )}
+      {submitError && (
+        <span className="error-message" role="alert">
+          {submitError}
+        </span>
+      )}
     </form>
   );
 }

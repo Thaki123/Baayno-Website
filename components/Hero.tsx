@@ -9,7 +9,13 @@ export default function Hero() {
       <div className="hero-content container">
         <h1 className="heading-font">Handcrafted Bookbinding</h1>
         <p>Precision Bookbinding &amp; Finishing</p>
-        <button className="btn btn-primary" onClick={scrollToQuote}>Request a Quote</button>
+        <button
+          className="btn btn-primary"
+          onClick={scrollToQuote}
+          aria-label="Request a Quote"
+        >
+          Request a Quote
+        </button>
       </div>
     </section>
   );
