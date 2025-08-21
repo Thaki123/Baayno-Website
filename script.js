@@ -174,6 +174,30 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    const faqs = [
+        {
+            question: 'What services do you offer?',
+            answer: 'We specialize in bookbinding, restoration, and custom finishing.'
+        },
+        {
+            question: 'How can I request a quote?',
+            answer: 'Use the request a quote form above and we will respond promptly.'
+        },
+        {
+            question: 'Do you handle large orders?',
+            answer: 'Yes, our industrial finishing service accommodates high-volume projects.'
+        }
+    ];
+    const faqList = document.getElementById('faq-list');
+    if (faqList) {
+        faqs.forEach(faq => {
+            const article = document.createElement('article');
+            article.className = 'faq';
+            article.innerHTML = `<h3>${faq.question}</h3><p>${faq.answer}</p>`;
+            faqList.appendChild(article);
+        });
+    }
+
     const testimonials = document.querySelectorAll('#testimonials .testimonial');
     const nextBtn = document.getElementById('next-testimonial');
     const prevBtn = document.getElementById('prev-testimonial');
