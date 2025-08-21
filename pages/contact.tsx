@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import Layout from '@/components/Layout';
 import ContactForm from '@/components/ContactForm';
 import SEO from '@/components/SEO';
+import styles from './Contact.module.css';
 
 interface CompanyInfo {
   address: string;
@@ -21,10 +22,10 @@ export default function ContactPage() {
   return (
     <Layout>
       <SEO title="Contact - Baayno" canonical="https://www.baayno.com/contact" />
-      <section id="contact" className="contact">
+      <section id="contact" className={styles.contact}>
         <div className="container">
           <h2 className="heading-font">Contact Us</h2>
-          <div className="company-details">
+          <div className={styles.companyDetails}>
             <p>{info.address}</p>
             <p>
               {info.phones.map((phone, idx) => (
