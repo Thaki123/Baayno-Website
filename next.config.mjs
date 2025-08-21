@@ -1,3 +1,4 @@
+// Configure base path and asset prefix for GitHub Pages deployments
 const isProd = process.env.NODE_ENV === 'production';
 
 /** @type {import('next').NextConfig} */
