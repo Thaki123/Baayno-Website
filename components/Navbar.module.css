@@ -43,7 +43,7 @@
   bottom: -2px;
   width: 100%;
   height: 2px;
-  background: var(--color-accent);
+  background: var(--accent);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.3s ease;
@@ -58,7 +58,7 @@
 .navLinks a:hover,
 .navLinks a:focus,
 .active {
-  color: var(--color-accent);
+  color: var(--accent);
 }
 
 .navToggle {
