@@ -30,7 +30,9 @@ jobs:
       - run: npm ci
       - run: npm run build
       - name: Disable Jekyll on Pages
-        run: touch out/.nojekyll
+        run: |
+          mkdir -p out
+          touch out/.nojekyll
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ./out

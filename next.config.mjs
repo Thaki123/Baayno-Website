@@ -1,5 +1,5 @@
 import nextPWA from 'next-pwa';
-import nextI18NextConfig from './next-i18next.config.mjs';
+import nextI18NextConfig from './next-i18next.config.js';
 
 // Configure base path and asset prefix for GitHub Pages deployments
 const isProd = process.env.NODE_ENV === 'production';
