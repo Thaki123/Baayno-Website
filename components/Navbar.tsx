@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
@@ -7,10 +7,24 @@ import styles from './Navbar.module.css';
 
 export default function Navbar() {
   const [open, setOpen] = useState<boolean>(false);
+  const [theme, setTheme] = useState<'light' | 'dark'>('light');
   const toggle = (): void => setOpen(!open);
   const close = (): void => setOpen(false);
+  const toggleTheme = (): void => {
+    const newTheme = theme === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    setTheme(newTheme);
+  };
   const router = useRouter();
   const isActive = (path: string): boolean => router.pathname === path;
+
+  useEffect(() => {
+    const stored = localStorage.getItem('theme') as 'light' | 'dark' | null;
+    const initialTheme = stored ?? 'light';
+    document.documentElement.setAttribute('data-theme', initialTheme);
+    setTheme(initialTheme);
+  }, []);
   return (
     <header className={styles.navbar}>
       <Link href="/" className={styles.logo} onClick={close}>
@@ -50,6 +64,9 @@ export default function Navbar() {
           </li>
         </ul>
       </nav>
+      <button onClick={toggleTheme} aria-label="Toggle theme">
+        {theme === 'light' ? 'Dark' : 'Light'}
+      </button>
       <motion.button
         className={styles.navToggle}
         aria-label="Toggle navigation"
