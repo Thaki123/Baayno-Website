@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import type { PostMeta } from '@/lib/posts';
 import styles from './Blog.module.css';
+import cardStyles from './Card.module.css';
 
 interface BlogProps {
   posts?: PostMeta[];
@@ -13,7 +14,7 @@ export default function Blog({ posts = [] }: BlogProps) {
       <h2 className="heading-font">Blog</h2>
       <div className={styles.blogGrid}>
         {posts.map((post) => (
-          <article key={post.slug} className="card">
+          <article key={post.slug} className={cardStyles.card}>
             {post.image && (
               <Image
                 src={post.image}

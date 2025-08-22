@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import styles from './Portfolio.module.css';
+import cardStyles from './Card.module.css';
 
 interface PortfolioItem {
   img: string;
@@ -63,7 +64,7 @@ export default function Portfolio() {
         {portfolioData.map((item, idx) => (
           <motion.article
             key={idx}
-            className={`card ${styles.card}`}
+            className={`${cardStyles.card} ${styles.card}`}
             style={{ gridRowEnd: `span ${spans[idx]}` }}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}

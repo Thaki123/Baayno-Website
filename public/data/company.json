@@ -5,32 +5,32 @@
   ],
   "services": [
     {
-      "icon": "📚",
+      "icon": "FaBook",
       "title": "Hardcover Binding",
       "description": "Durable covers for premium books."
     },
     {
-      "icon": "📘",
+      "icon": "FaBookOpen",
       "title": "Perfect/PUR Binding",
       "description": "Clean, professional softcover books."
     },
     {
-      "icon": "🛠️",
+      "icon": "FaTools",
       "title": "Restoration & Repair",
       "description": "Give cherished books a new life."
     },
     {
-      "icon": "✨",
+      "icon": "FaStar",
       "title": "Foil & Embossing",
       "description": "Custom finishes that stand out."
     },
     {
-      "icon": "🧪",
+      "icon": "FaFlask",
       "title": "Short-Run Prototyping",
       "description": "Test editions without large commitments."
     },
     {
-      "icon": "🏭",
+      "icon": "FaIndustry",
       "title": "Industrial Finishing",
       "description": "High-volume finishing for publishers."
     }
