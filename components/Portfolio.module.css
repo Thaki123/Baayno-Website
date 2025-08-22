@@ -1,0 +1,54 @@
+.portfolio {
+  margin-top: 2em;
+}
+
+.portfolioGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2em;
+}
+
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 1000;
+}
+
+.open {
+  display: flex;
+}
+
+.lightbox img {
+  max-width: 90%;
+  max-height: 80%;
+  border-radius: var(--radius);
+}
+
+.lightboxClose {
+  color: var(--color-white);
+  font-size: 2rem;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  cursor: pointer;
+}
+
+.lightboxCaption {
+  color: var(--color-white);
+  margin-top: 0.5em;
+}
+
+@media (min-width: 1024px) {
+  .portfolioGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

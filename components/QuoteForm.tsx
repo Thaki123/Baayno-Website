@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import styles from './QuoteForm.module.css';
 
 interface QuoteFormState {
   name: string;
@@ -61,10 +62,10 @@ export default function QuoteForm() {
   };
 
   return (
-    <section id="quote" className="quote">
+    <section id="quote" className={styles.quote}>
       <div className="container">
         <h2 className="heading-font">Request a Quote</h2>
-        <form className="quote-form" onSubmit={handleSubmit} noValidate>
+        <form className={styles.form} onSubmit={handleSubmit} noValidate>
           <div className="form-group">
             <label htmlFor="quote-name">Name</label>
             <input

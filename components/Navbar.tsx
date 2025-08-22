@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import styles from './Navbar.module.css';
 
 export default function Navbar() {
   const [open, setOpen] = useState<boolean>(false);
@@ -11,8 +12,8 @@ export default function Navbar() {
   const router = useRouter();
   const isActive = (path: string): boolean => router.pathname === path;
   return (
-    <header className="navbar">
-      <Link href="/" className="logo" onClick={close}>
+    <header className={styles.navbar}>
+      <Link href="/" className={styles.logo} onClick={close}>
         <Image
           src={`${router.basePath}/logo.svg`}
           alt="Fouad Baayno Bookbindery logo"
@@ -21,36 +22,36 @@ export default function Navbar() {
         />
       </Link>
       <nav>
-        <ul id="nav-links" className={`nav-links ${open ? 'open' : ''}`}>
+        <ul id="nav-links" className={`${styles.navLinks} ${open ? styles.open : ''}`}>
           <li>
-            <Link href="/" onClick={close} className={isActive('/') ? 'active' : ''}>
+            <Link href="/" onClick={close} className={isActive('/') ? styles.active : ''}>
               Home
             </Link>
           </li>
           <li>
-            <Link href="/services" onClick={close} className={isActive('/services') ? 'active' : ''}>
+            <Link href="/services" onClick={close} className={isActive('/services') ? styles.active : ''}>
               Services
             </Link>
           </li>
           <li>
-            <Link href="/portfolio" onClick={close} className={isActive('/portfolio') ? 'active' : ''}>
+            <Link href="/portfolio" onClick={close} className={isActive('/portfolio') ? styles.active : ''}>
               Portfolio
             </Link>
           </li>
           <li>
-            <Link href="/blog" onClick={close} className={isActive('/blog') ? 'active' : ''}>
+            <Link href="/blog" onClick={close} className={isActive('/blog') ? styles.active : ''}>
               Blog
             </Link>
           </li>
           <li>
-            <Link href="/contact" onClick={close} className={isActive('/contact') ? 'active' : ''}>
+            <Link href="/contact" onClick={close} className={isActive('/contact') ? styles.active : ''}>
               Contact
             </Link>
           </li>
         </ul>
       </nav>
       <motion.button
-        id="nav-toggle"
+        className={styles.navToggle}
         aria-label="Toggle navigation"
         aria-controls="nav-links"
         aria-expanded={open}

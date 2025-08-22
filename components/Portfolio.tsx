@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { useState } from 'react';
+import styles from './Portfolio.module.css';
 
 interface PortfolioItem {
   img: string;
@@ -42,9 +43,9 @@ export default function Portfolio() {
   };
 
   return (
-    <section id="portfolio" className="portfolio container">
+    <section id="portfolio" className={`container ${styles.portfolio}`}>
       <h2 className="heading-font">Portfolio</h2>
-      <div className="portfolio-grid">
+      <div className={styles.portfolioGrid}>
         {portfolioData.map((item, idx) => (
           <article key={idx} className="card">
             <Image
@@ -62,14 +63,14 @@ export default function Portfolio() {
       </div>
       {selected && (
         <div
-          className="lightbox open"
+          className={`${styles.lightbox} ${styles.open}`}
           style={{
             opacity: lightboxOpen ? 1 : 0,
             transition: 'opacity 0.3s ease'
           }}
           onClick={closeLightbox}
         >
-          <span className="lightbox-close" onClick={closeLightbox}>
+          <span className={styles.lightboxClose} onClick={closeLightbox}>
             &times;
           </span>
           <div onClick={(e) => e.stopPropagation()}>
@@ -80,7 +81,7 @@ export default function Portfolio() {
               height={600}
               style={{ width: '100%', height: 'auto' }}
             />
-            <div className="lightbox-caption">{selected.title}</div>
+            <div className={styles.lightboxCaption}>{selected.title}</div>
           </div>
         </div>
       )}

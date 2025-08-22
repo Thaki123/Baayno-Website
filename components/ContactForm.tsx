@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import styles from './ContactForm.module.css';
 
 interface FormState {
   name: string;
@@ -55,7 +56,7 @@ export default function ContactForm() {
   };
 
   return (
-    <form id="contact-form" className="contact-form" onSubmit={handleSubmit} noValidate>
+    <form id="contact-form" className={styles.form} onSubmit={handleSubmit} noValidate>
       <div className="form-group">
         <label htmlFor="name">Name</label>
         <input
