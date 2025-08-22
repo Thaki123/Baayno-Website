@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { useState } from 'react';
 
 interface PortfolioItem {
   img: string;
@@ -25,6 +26,21 @@ const portfolioData: PortfolioItem[] = [
 ];
 
 export default function Portfolio() {
+  const [selected, setSelected] = useState<PortfolioItem | null>(null);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+
+  const openLightbox = (item: PortfolioItem) => {
+    setSelected(item);
+    // allow lightbox to mount before fading in
+    setTimeout(() => setLightboxOpen(true), 0);
+  };
+
+  const closeLightbox = () => {
+    setLightboxOpen(false);
+    // wait for fade-out transition
+    setTimeout(() => setSelected(null), 300);
+  };
+
   return (
     <section id="portfolio" className="portfolio container">
       <h2 className="heading-font">Portfolio</h2>
@@ -37,12 +53,37 @@ export default function Portfolio() {
               width={600}
               height={400}
               style={{ width: '100%', height: 'auto' }}
+              onClick={() => openLightbox(item)}
             />
             <h3>{item.title}</h3>
             <p>{item.description}</p>
           </article>
         ))}
       </div>
+      {selected && (
+        <div
+          className="lightbox open"
+          style={{
+            opacity: lightboxOpen ? 1 : 0,
+            transition: 'opacity 0.3s ease'
+          }}
+          onClick={closeLightbox}
+        >
+          <span className="lightbox-close" onClick={closeLightbox}>
+            &times;
+          </span>
+          <div onClick={(e) => e.stopPropagation()}>
+            <Image
+              src={selected.img}
+              alt={selected.title}
+              width={800}
+              height={600}
+              style={{ width: '100%', height: 'auto' }}
+            />
+            <div className="lightbox-caption">{selected.title}</div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
