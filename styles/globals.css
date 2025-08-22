@@ -1,12 +1,18 @@
 html[data-theme="light"] {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #000000;
+  --accent: #d61f26;
+  --accent-hover: #b3191f;
+  --accent-active: #8f1419;
   color-scheme: light;
 }
 
 html[data-theme="dark"] {
-  --background: #0a0a0a;
-  --foreground: #ededed;
+  --background: #1a1a1a;
+  --foreground: #d61f26;
+  --accent: #d61f26;
+  --accent-hover: #b3191f;
+  --accent-active: #8f1419;
   color-scheme: dark;
 }
 
@@ -62,8 +68,6 @@ html[data-theme="dark"] {
     --color-black: #0b0b0b;
     --color-white: #ffffff;
     --color-red: #d61f26;
-    --color-accent: var(--color-red); /* switch to var(--color-black) for gold/black theme */
-    --color-accent-dark: #a3181e;
     --color-gold: #c9a227;
     --font-body: 'Open Sans', sans-serif;
     --font-heading: 'caecilia_lt_std55_roman', serif;
@@ -87,7 +91,7 @@ html[data-theme="dark"] {
 
 .gradient-bg {
     min-height: 100vh;
-    background: linear-gradient(-45deg, var(--color-gold), var(--color-accent));
+    background: linear-gradient(-45deg, var(--color-gold), var(--accent));
     background-size: 400% 400%;
     animation: gold-accent-gradient 15s ease infinite;
 }
@@ -156,36 +160,41 @@ body {
     min-height: 120px;
 }
 
-.error-message {
-    display: block;
-    color: var(--color-accent);
-    font-size: 0.875em;
-    margin-top: 0.25em;
-}
+  .error-message {
+      display: block;
+      color: var(--accent);
+      font-size: 0.875em;
+      margin-top: 0.25em;
+  }
 
-.success-message {
-    color: var(--color-accent);
-    margin-top: 1em;
-    display: block;
-}
+  .success-message {
+      color: var(--accent);
+      margin-top: 1em;
+      display: block;
+  }
 
 /* Buttons */
-button {
-    padding: var(--btn-padding);
-    font-size: 1em;
-    background: var(--color-accent);
-    color: var(--color-white);
-    border: none;
-    border-radius: var(--radius);
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
+  button {
+      padding: var(--btn-padding);
+      font-size: 1em;
+      background: var(--accent);
+      color: var(--color-white);
+      border: none;
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: all 0.3s ease;
+  }
 
-button:hover,
-button:focus {
-    background: var(--color-accent-dark);
-    transform: translateY(-2px);
-}
+  button:hover,
+  button:focus {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
+  }
+
+  button:active {
+      background: var(--accent-active);
+      transform: translateY(0);
+  }
 
 .btn {
     display: inline-block;
@@ -196,16 +205,21 @@ button:focus {
     transition: background 0.3s, color 0.3s, transform 0.3s;
 }
 
-.btn-primary {
-    background: var(--color-accent);
-    color: var(--color-white);
-}
+  .btn-primary {
+      background: var(--accent);
+      color: var(--color-white);
+  }
 
-.btn-primary:hover,
-.btn-primary:focus {
-    background: var(--color-accent-dark);
-    transform: translateY(-2px);
-}
+  .btn-primary:hover,
+  .btn-primary:focus {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
+  }
+
+  .btn-primary:active {
+      background: var(--accent-active);
+      transform: translateY(0);
+  }
 
 footer {
     text-align: center;

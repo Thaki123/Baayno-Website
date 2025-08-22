@@ -7,7 +7,7 @@ import styles from './Navbar.module.css';
 
 export default function Navbar() {
   const [open, setOpen] = useState<boolean>(false);
-  const [theme, setTheme] = useState<'light' | 'dark'>('light');
+  const [theme, setTheme] = useState<'light' | 'dark'>('dark');
   const toggle = (): void => setOpen(!open);
   const close = (): void => setOpen(false);
   const toggleTheme = (): void => {
@@ -21,7 +21,7 @@ export default function Navbar() {
 
   useEffect(() => {
     const stored = localStorage.getItem('theme') as 'light' | 'dark' | null;
-    const initialTheme = stored ?? 'light';
+    const initialTheme = stored ?? 'dark';
     document.documentElement.setAttribute('data-theme', initialTheme);
     setTheme(initialTheme);
   }, []);
