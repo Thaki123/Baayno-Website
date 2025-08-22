@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import type { PostMeta } from '@/lib/posts';
+import styles from './Blog.module.css';
 
 interface BlogProps {
   posts?: PostMeta[];
@@ -8,9 +9,9 @@ interface BlogProps {
 
 export default function Blog({ posts = [] }: BlogProps) {
   return (
-    <section id="blog" className="blog container">
+    <section id="blog" className={`container ${styles.blog}`}>
       <h2 className="heading-font">Blog</h2>
-      <div className="blog-grid">
+      <div className={styles.blogGrid}>
         {posts.map((post) => (
           <article key={post.slug} className="card">
             {post.image && (
