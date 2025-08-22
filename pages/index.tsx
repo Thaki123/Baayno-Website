@@ -1,6 +1,7 @@
 import type { GetStaticProps } from 'next';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import nextI18NextConfig from '../next-i18next.config.mjs';
 
 import Layout from '@/components/Layout';
 import SEO from '@/components/SEO';
@@ -32,6 +33,6 @@ export default function Home() {
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
   props: {
-    ...(await serverSideTranslations(locale ?? 'en', ['common'])),
+    ...(await serverSideTranslations(locale ?? 'en', ['common'], nextI18NextConfig)),
   },
 });
