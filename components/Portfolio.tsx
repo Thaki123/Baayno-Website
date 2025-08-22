@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { useState } from 'react';
+import { motion } from 'framer-motion';
 import styles from './Portfolio.module.css';
 
 interface PortfolioItem {
@@ -29,6 +30,19 @@ const portfolioData: PortfolioItem[] = [
 export default function Portfolio() {
   const [selected, setSelected] = useState<PortfolioItem | null>(null);
   const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [spans, setSpans] = useState<number[]>(portfolioData.map(() => 1));
+
+  const rowHeight = 10;
+
+  const handleLoad = (idx: number, img: HTMLImageElement) => {
+    const height = (img.naturalHeight / img.naturalWidth) * img.width;
+    const span = Math.ceil(height / rowHeight);
+    setSpans((prev) => {
+      const next = [...prev];
+      next[idx] = span;
+      return next;
+    });
+  };
 
   const openLightbox = (item: PortfolioItem) => {
     setSelected(item);
@@ -47,18 +61,29 @@ export default function Portfolio() {
       <h2 className="heading-font">Portfolio</h2>
       <div className={styles.portfolioGrid}>
         {portfolioData.map((item, idx) => (
-          <article key={idx} className="card">
+          <motion.article
+            key={idx}
+            className={`card ${styles.card}`}
+            style={{ gridRowEnd: `span ${spans[idx]}` }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: idx * 0.1 }}
+            onClick={() => openLightbox(item)}
+          >
             <Image
               src={item.img}
               alt={item.title}
               width={600}
               height={400}
               style={{ width: '100%', height: 'auto' }}
-              onClick={() => openLightbox(item)}
+              onLoadingComplete={(img) => handleLoad(idx, img)}
             />
-            <h3>{item.title}</h3>
-            <p>{item.description}</p>
-          </article>
+            <div className={styles.caption}>
+              <h3>{item.title}</h3>
+              <p>{item.description}</p>
+            </div>
+          </motion.article>
         ))}
       </div>
       {selected && (
