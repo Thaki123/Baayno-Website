@@ -130,34 +130,6 @@ body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Shared components */
-.card {
-    background: var(--color-white);
-    padding: 1em;
-    border-radius: var(--radius);
-    border-top: 4px solid var(--color-accent);
-    box-shadow: var(--shadow, 0 2px 4px rgba(0, 0, 0, 0.1));
-    transition: all 0.3s ease;
-}
-
-.card img {
-    width: 100%;
-    height: auto;
-    border-radius: var(--radius);
-    margin-bottom: 0.5rem;
-}
-
-.card .icon {
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
-}
-
-.card:hover,
-.card:focus-within {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-}
-
 /* Form elements */
 .form-group {
     margin-bottom: 1em;
