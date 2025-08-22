@@ -38,6 +38,6 @@ export async function getPostData(slug: string): Promise<PostData> {
   const fullPath = path.join(postsDirectory, `${slug}.md`);
   const fileContents = await fs.readFile(fullPath, 'utf8');
   const { data, content } = matter(fileContents);
-  const htmlContent = marked(content);
+  const htmlContent = await marked(content);
   return { slug, content: htmlContent, ...(data as Omit<PostData, 'slug' | 'content'>) };
 }
