@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'next-i18next';
 import styles from './Navbar.module.css';
 
 export default function Navbar() {
@@ -18,6 +19,7 @@ export default function Navbar() {
   };
   const router = useRouter();
   const isActive = (path: string): boolean => router.pathname === path;
+  const { t } = useTranslation('common');
 
   useEffect(() => {
     const stored = localStorage.getItem('theme') as 'light' | 'dark' | null;
@@ -39,33 +41,33 @@ export default function Navbar() {
         <ul id="nav-links" className={`${styles.navLinks} ${open ? styles.open : ''}`}>
           <li>
             <Link href="/" onClick={close} className={isActive('/') ? styles.active : ''}>
-              Home
+              {t('home')}
             </Link>
           </li>
           <li>
             <Link href="/services" onClick={close} className={isActive('/services') ? styles.active : ''}>
-              Services
+              {t('services')}
             </Link>
           </li>
           <li>
             <Link href="/portfolio" onClick={close} className={isActive('/portfolio') ? styles.active : ''}>
-              Portfolio
+              {t('portfolio')}
             </Link>
           </li>
           <li>
             <Link href="/blog" onClick={close} className={isActive('/blog') ? styles.active : ''}>
-              Blog
+              {t('blog')}
             </Link>
           </li>
           <li>
             <Link href="/contact" onClick={close} className={isActive('/contact') ? styles.active : ''}>
-              Contact
+              {t('contact')}
             </Link>
           </li>
         </ul>
       </nav>
       <button onClick={toggleTheme} aria-label="Toggle theme">
-        {theme === 'light' ? 'Dark' : 'Light'}
+        {theme === 'light' ? t('themeDark') : t('themeLight')}
       </button>
       <motion.button
         className={styles.navToggle}
