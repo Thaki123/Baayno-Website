@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import styles from './ContactForm.module.css';
 
 interface FormState {
@@ -58,7 +59,7 @@ export default function ContactForm() {
   return (
     <form id="contact-form" className={styles.form} onSubmit={handleSubmit} noValidate>
       <div className="form-group">
-        <label htmlFor="name">Name</label>
+        <label htmlFor="name" className={styles.label}>Name</label>
         <input
           type="text"
           id="name"
@@ -67,16 +68,27 @@ export default function ContactForm() {
           onChange={handleChange}
           aria-invalid={!!errors.name}
           aria-describedby={errors.name ? 'name-error' : undefined}
+          className={styles.input}
           required
         />
-        {errors.name && (
-          <span id="name-error" className="error-message" role="alert">
-            {errors.name}
-          </span>
-        )}
+        <AnimatePresence>
+          {errors.name && (
+            <motion.span
+              id="name-error"
+              className={styles.errorMessage}
+              role="alert"
+              initial={{ opacity: 0, y: -5 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -5 }}
+              transition={{ duration: 0.2 }}
+            >
+              {errors.name}
+            </motion.span>
+          )}
+        </AnimatePresence>
       </div>
       <div className="form-group">
-        <label htmlFor="email">Email</label>
+        <label htmlFor="email" className={styles.label}>Email</label>
         <input
           type="email"
           id="email"
@@ -85,16 +97,27 @@ export default function ContactForm() {
           onChange={handleChange}
           aria-invalid={!!errors.email}
           aria-describedby={errors.email ? 'email-error' : undefined}
+          className={styles.input}
           required
         />
-        {errors.email && (
-          <span id="email-error" className="error-message" role="alert">
-            {errors.email}
-          </span>
-        )}
+        <AnimatePresence>
+          {errors.email && (
+            <motion.span
+              id="email-error"
+              className={styles.errorMessage}
+              role="alert"
+              initial={{ opacity: 0, y: -5 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -5 }}
+              transition={{ duration: 0.2 }}
+            >
+              {errors.email}
+            </motion.span>
+          )}
+        </AnimatePresence>
       </div>
       <div className="form-group">
-        <label htmlFor="message">Message</label>
+        <label htmlFor="message" className={styles.label}>Message</label>
         <textarea
           id="message"
           name="message"
@@ -102,25 +125,55 @@ export default function ContactForm() {
           onChange={handleChange}
           aria-invalid={!!errors.message}
           aria-describedby={errors.message ? 'message-error' : undefined}
+          className={styles.textarea}
           required
         ></textarea>
-        {errors.message && (
-          <span id="message-error" className="error-message" role="alert">
-            {errors.message}
-          </span>
-        )}
+        <AnimatePresence>
+          {errors.message && (
+            <motion.span
+              id="message-error"
+              className={styles.errorMessage}
+              role="alert"
+              initial={{ opacity: 0, y: -5 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -5 }}
+              transition={{ duration: 0.2 }}
+            >
+              {errors.message}
+            </motion.span>
+          )}
+        </AnimatePresence>
       </div>
-      <button type="submit" aria-label="Send message">Send</button>
-      {success && (
-        <span className="success-message" role="status" aria-live="polite">
-          {success}
-        </span>
-      )}
-      {submitError && (
-        <span className="error-message" role="alert">
-          {submitError}
-        </span>
-      )}
+      <button type="submit" className={styles.button} aria-label="Send message">Send</button>
+      <AnimatePresence>
+        {success && (
+          <motion.span
+            className={styles.successMessage}
+            role="status"
+            aria-live="polite"
+            initial={{ opacity: 0, y: -5 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -5 }}
+            transition={{ duration: 0.3 }}
+          >
+            {success}
+          </motion.span>
+        )}
+      </AnimatePresence>
+      <AnimatePresence>
+        {submitError && (
+          <motion.span
+            className={styles.errorMessage}
+            role="alert"
+            initial={{ opacity: 0, y: -5 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -5 }}
+            transition={{ duration: 0.3 }}
+          >
+            {submitError}
+          </motion.span>
+        )}
+      </AnimatePresence>
     </form>
   );
 }
