@@ -1,3 +1,7 @@
+import type { GetStaticProps } from 'next';
+import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+
 import Layout from '@/components/Layout';
 import SEO from '@/components/SEO';
 import Hero from '@/components/Hero';
@@ -8,11 +12,12 @@ import Portfolio from '@/components/Portfolio';
 import Blog from '@/components/Blog';
 
 export default function Home() {
+  const { t } = useTranslation('common');
   return (
     <Layout>
       <SEO
-        title="Baayno — Bookbinding & Finishing"
-        description="Precision bookbinding & finishing"
+        title={t('seoTitle')}
+        description={t('seoDescription')}
         canonical="https://www.baayno.com/"
       />
       <Hero />
@@ -24,3 +29,9 @@ export default function Home() {
     </Layout>
   );
 }
+
+export const getStaticProps: GetStaticProps = async ({ locale }) => ({
+  props: {
+    ...(await serverSideTranslations(locale ?? 'en', ['common'])),
+  },
+});
