@@ -1,4 +1,6 @@
 import { useEffect, ReactNode } from 'react';
+import { useRouter } from 'next/router';
+import { AnimatePresence, motion } from 'framer-motion';
 import Navbar from './Navbar';
 import LanguageModal from './LanguageModal';
 
@@ -7,6 +9,8 @@ interface LayoutProps {
 }
 
 export default function Layout({ children }: LayoutProps) {
+  const router = useRouter();
+
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
@@ -27,7 +31,7 @@ export default function Layout({ children }: LayoutProps) {
       sections.forEach(sec => observer.unobserve(sec));
       observer.disconnect();
     };
-  }, []);
+  }, [router.asPath]);
 
   return (
     <div className="gradient-bg">
@@ -35,10 +39,21 @@ export default function Layout({ children }: LayoutProps) {
       <div className="sticky-header">
         <Navbar />
       </div>
-      {children}
-      <footer>
-        <p>&copy; 2025 Baayno Website</p>
-      </footer>
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={router.asPath}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.3 }}
+        >
+          {children}
+          <footer>
+            <p>&copy; 2025 Baayno Website</p>
+          </footer>
+        </motion.div>
+      </AnimatePresence>
     </div>
   );
 }
+
