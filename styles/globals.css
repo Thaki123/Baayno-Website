@@ -63,7 +63,8 @@ a {
 :root {
     --color-black: #0b0b0b;
     --color-white: #ffffff;
-    --color-accent: #d61f26;
+    --color-red: #d61f26;
+    --color-accent: var(--color-red); /* switch to var(--color-black) for gold/black theme */
     --color-accent-dark: #a3181e;
     --color-gold: #c9a227;
     --font-body: 'Open Sans', sans-serif;
@@ -72,6 +73,25 @@ a {
     --fw-bold: 700;
     --radius: 12px;
     --btn-padding: 0.75em 1.5em;
+}
+
+@keyframes gold-accent-gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.gradient-bg {
+    min-height: 100vh;
+    background: linear-gradient(-45deg, var(--color-gold), var(--color-accent));
+    background-size: 400% 400%;
+    animation: gold-accent-gradient 15s ease infinite;
 }
 
 .body-font {

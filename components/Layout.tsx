@@ -29,7 +29,7 @@ export default function Layout({ children }: LayoutProps) {
   }, []);
 
   return (
-    <>
+    <div className="gradient-bg">
       <div className="sticky-header">
         <Navbar />
       </div>
@@ -37,6 +37,6 @@ export default function Layout({ children }: LayoutProps) {
       <footer>
         <p>&copy; 2025 Baayno Website</p>
       </footer>
-    </>
+    </div>
   );
 }
