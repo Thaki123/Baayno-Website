@@ -1,3 +1,5 @@
+import BookAnimation from './BookAnimation';
+
 export default function Hero() {
   const scrollToQuote = (): void => {
     if (typeof document !== 'undefined') {
@@ -7,6 +9,7 @@ export default function Hero() {
   return (
     <section className="hero" id="hero">
       <div className="hero-content container">
+        <BookAnimation />
         <h1 className="heading-font">Handcrafted Bookbinding</h1>
         <p>Precision Bookbinding &amp; Finishing</p>
         <button
