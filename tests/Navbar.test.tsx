@@ -10,15 +10,16 @@ describe('Navbar', () => {
   it('toggles navigation menu when button is clicked', () => {
     const { container } = render(<Navbar />);
     const toggleButton = screen.getByRole('button', { name: /toggle navigation/i });
+    const navLinks = container.querySelector('#nav-links');
     expect(toggleButton).toHaveAttribute('aria-expanded', 'false');
-    expect(container.querySelector('ul')).toBeNull();
+    expect(navLinks).not.toHaveClass('open');
     fireEvent.click(toggleButton);
     expect(toggleButton).toHaveAttribute('aria-expanded', 'true');
-    expect(container.querySelector('ul')).toBeInTheDocument();
+    expect(navLinks).toHaveClass('open');
     fireEvent.click(toggleButton);
     expect(toggleButton).toHaveAttribute('aria-expanded', 'false');
     return waitFor(() => {
-      expect(container.querySelector('ul')).toBeNull();
+      expect(navLinks).not.toHaveClass('open');
     });
   });
 });

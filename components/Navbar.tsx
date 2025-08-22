@@ -2,13 +2,14 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 export default function Navbar() {
   const [open, setOpen] = useState<boolean>(false);
   const toggle = (): void => setOpen(!open);
   const close = (): void => setOpen(false);
   const router = useRouter();
+  const isActive = (path: string): boolean => router.pathname === path;
   return (
     <header className="navbar">
       <Link href="/" className="logo" onClick={close}>
@@ -20,33 +21,33 @@ export default function Navbar() {
         />
       </Link>
       <nav>
-        <AnimatePresence>
-          {open && (
-            <motion.ul
-              id="nav-links"
-              className="nav-links open"
-              initial={{ x: '100%', opacity: 0 }}
-              animate={{ x: 0, opacity: 1, transition: { type: 'spring', stiffness: 300, damping: 30 } }}
-              exit={{ x: '100%', opacity: 0, transition: { type: 'spring', stiffness: 300, damping: 30 } }}
-            >
-              <motion.li initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}>
-                <Link href="/" onClick={close}>Home</Link>
-              </motion.li>
-              <motion.li initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
-                <Link href="/services" onClick={close}>Services</Link>
-              </motion.li>
-              <motion.li initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}>
-                <Link href="/portfolio" onClick={close}>Portfolio</Link>
-              </motion.li>
-              <motion.li initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}>
-                <Link href="/blog" onClick={close}>Blog</Link>
-              </motion.li>
-              <motion.li initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }}>
-                <Link href="/contact" onClick={close}>Contact</Link>
-              </motion.li>
-            </motion.ul>
-          )}
-        </AnimatePresence>
+        <ul id="nav-links" className={`nav-links ${open ? 'open' : ''}`}>
+          <li>
+            <Link href="/" onClick={close} className={isActive('/') ? 'active' : ''}>
+              Home
+            </Link>
+          </li>
+          <li>
+            <Link href="/services" onClick={close} className={isActive('/services') ? 'active' : ''}>
+              Services
+            </Link>
+          </li>
+          <li>
+            <Link href="/portfolio" onClick={close} className={isActive('/portfolio') ? 'active' : ''}>
+              Portfolio
+            </Link>
+          </li>
+          <li>
+            <Link href="/blog" onClick={close} className={isActive('/blog') ? 'active' : ''}>
+              Blog
+            </Link>
+          </li>
+          <li>
+            <Link href="/contact" onClick={close} className={isActive('/contact') ? 'active' : ''}>
+              Contact
+            </Link>
+          </li>
+        </ul>
       </nav>
       <motion.button
         id="nav-toggle"
@@ -56,7 +57,37 @@ export default function Navbar() {
         onClick={toggle}
         whileTap={{ scale: 0.9 }}
       >
-        &#9776;
+        {open ? (
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            width="24"
+            height="24"
+            aria-hidden="true"
+          >
+            <path
+              d="M6 6L18 18M6 18L18 6"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+            />
+          </svg>
+        ) : (
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            width="24"
+            height="24"
+            aria-hidden="true"
+          >
+            <path
+              d="M4 6h16M4 12h16M4 18h16"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+            />
+          </svg>
+        )}
       </motion.button>
     </header>
   );
