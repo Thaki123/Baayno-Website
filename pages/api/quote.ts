@@ -2,8 +2,18 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import getTransporter from '../../lib/mailer';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse): Promise<void> {
+  if (req.method === 'GET') {
+    const transporter = getTransporter();
+    if (!transporter) {
+      res.status(503).json({ error: 'Email service not configured.' });
+    } else {
+      res.status(200).json({ message: 'Email service configured.' });
+    }
+    return;
+  }
+
   if (req.method !== 'POST') {
-    res.setHeader('Allow', ['POST']);
+    res.setHeader('Allow', ['GET', 'POST']);
     res.status(405).json({ error: 'Method not allowed' });
     return;
   }
@@ -16,8 +26,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     notes: string;
   };
 
+  const transporter = getTransporter();
+  if (!transporter) {
+    res.status(503).json({ error: 'Email service not configured.' });
+    return;
+  }
+
   try {
-    const transporter = getTransporter();
     await transporter.sendMail({
       from: process.env.SMTP_FROM,
       to: process.env.SMTP_TO,

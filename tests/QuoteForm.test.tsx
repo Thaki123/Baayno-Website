@@ -4,6 +4,9 @@ import QuoteForm from '../components/QuoteForm';
 
 describe('QuoteForm', () => {
   it('shows validation errors for empty fields', async () => {
+    const mockFetch = jest.fn().mockResolvedValue({ ok: true });
+    (global as any).fetch = mockFetch;
+
     render(<QuoteForm />);
     fireEvent.click(screen.getByRole('button', { name: /submit/i }));
     expect(await screen.findByText('Name is required.')).toBeInTheDocument();
@@ -13,6 +16,9 @@ describe('QuoteForm', () => {
   });
 
   it('shows error for invalid email', async () => {
+    const mockFetch = jest.fn().mockResolvedValue({ ok: true });
+    (global as any).fetch = mockFetch;
+
     render(<QuoteForm />);
     fireEvent.change(screen.getByLabelText(/name/i), { target: { value: 'John Doe' } });
     fireEvent.change(screen.getByLabelText(/email/i), { target: { value: 'invalid' } });
