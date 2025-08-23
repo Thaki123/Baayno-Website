@@ -44,9 +44,9 @@ export default function Hero() {
         <BookAnimation />
         <motion.h1
           className="heading-font"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6, ease: 'easeInOut' }}
         >
           Handcrafted Bookbinding
         </motion.h1>
@@ -55,9 +55,9 @@ export default function Hero() {
           className="btn btn-primary"
           onClick={scrollToQuote}
           aria-label="Request a Quote"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.6 }}
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.3, duration: 0.6, ease: 'easeInOut' }}
         >
           Request a Quote
         </motion.button>

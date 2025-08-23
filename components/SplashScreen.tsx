@@ -15,10 +15,10 @@ export default function SplashScreen({ onFinish }: SplashScreenProps) {
   return (
     <motion.div
       className="splash-screen"
-      initial={{ opacity: 1 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.5 }}
+      initial={{ opacity: 1, scale: 1 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.95 }}
+      transition={{ duration: 0.6, ease: 'easeInOut' }}
       style={{
         position: 'fixed',
         top: 0,
