@@ -1,5 +1,4 @@
 import nextPWA from 'next-pwa';
-import nextI18NextConfig from './next-i18next.config.js';
 
 const isProd = process.env.NODE_ENV === 'production';
 const basePath = process.env.BASE_PATH || '';
@@ -15,10 +14,10 @@ const withPWA = nextPWA({
 const nextConfig = {
   reactStrictMode: true,
   images: {
+    unoptimized: true,
     domains: ['images.unsplash.com'],
   },
-  i18n: nextI18NextConfig.i18n,
-  output: 'standalone',
+  output: 'export',
   basePath,
   assetPrefix: basePath ? `${basePath}/` : undefined,
 };
