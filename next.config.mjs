@@ -2,6 +2,7 @@ import nextPWA from 'next-pwa';
 import nextI18NextConfig from './next-i18next.config.js';
 
 const isProd = process.env.NODE_ENV === 'production';
+const basePath = process.env.BASE_PATH || '';
 
 const withPWA = nextPWA({
   dest: 'public',
@@ -18,6 +19,8 @@ const nextConfig = {
   },
   i18n: nextI18NextConfig.i18n,
   output: 'standalone',
+  basePath,
+  assetPrefix: basePath ? `${basePath}/` : undefined,
 };
 
 export default withPWA(nextConfig);
