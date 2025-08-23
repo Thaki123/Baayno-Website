@@ -1,21 +1,19 @@
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { useRouter } from 'next/router';
+import Loader from './Loader';
 
 interface SplashScreenProps {
   onFinish: () => void;
 }
 
 export default function SplashScreen({ onFinish }: SplashScreenProps) {
-  const router = useRouter();
   useEffect(() => {
-    const timer = setTimeout(onFinish, 2500);
+    const timer = setTimeout(onFinish, 3000);
     return () => clearTimeout(timer);
   }, [onFinish]);
 
   return (
     <motion.div
-      onClick={onFinish}
       className="splash-screen"
       initial={{ opacity: 1 }}
       animate={{ opacity: 1 }}
@@ -34,13 +32,7 @@ export default function SplashScreen({ onFinish }: SplashScreenProps) {
         zIndex: 9999,
       }}
     >
-      <motion.img
-        src={`${router.basePath}/logo.svg`}
-        alt="Baayno Logo"
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1 }}
-      />
+      <Loader />
     </motion.div>
   );
 }
