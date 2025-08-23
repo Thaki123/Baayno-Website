@@ -1,8 +1,18 @@
 /* eslint-env jest */
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import ContactForm from '../components/ContactForm';
+import { useRouter } from 'next/router';
+
+jest.mock('next/router', () => ({
+  useRouter: jest.fn(),
+}));
 
 describe('ContactForm', () => {
+  const basePath = '/base';
+
+  beforeEach(() => {
+    (useRouter as jest.Mock).mockReturnValue({ basePath });
+  });
   it('shows validation errors for empty and invalid input', async () => {
     const mockFetch = jest.fn().mockResolvedValue({ ok: true });
     (global as any).fetch = mockFetch;
@@ -13,6 +23,7 @@ describe('ContactForm', () => {
     expect(await screen.findByText('Name is required.')).toBeInTheDocument();
     expect(await screen.findByText('Email is required.')).toBeInTheDocument();
     expect(await screen.findByText('Message is required.')).toBeInTheDocument();
+    expect(mockFetch).toHaveBeenCalledWith(`${basePath}/api/contact`);
     expect(mockFetch).toHaveBeenCalledTimes(1);
 
     fireEvent.change(screen.getByLabelText(/name/i), { target: { value: 'John Doe' } });
@@ -40,7 +51,7 @@ describe('ContactForm', () => {
     await waitFor(() =>
       expect(mockFetch).toHaveBeenNthCalledWith(
         2,
-        '/api/contact',
+        `${basePath}/api/contact`,
         expect.objectContaining({ method: 'POST' })
       )
     );

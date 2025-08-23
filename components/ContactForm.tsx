@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 import { motion, AnimatePresence } from 'framer-motion';
 import styles from './ContactForm.module.css';
 
@@ -20,9 +21,10 @@ export default function ContactForm() {
   const [success, setSuccess] = useState('');
   const [submitError, setSubmitError] = useState('');
   const [disabled, setDisabled] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
-    fetch('/api/contact')
+    fetch(`${router.basePath}/api/contact`)
       .then((res) => {
         if (!res.ok) {
           setDisabled(true);
@@ -33,7 +35,7 @@ export default function ContactForm() {
         setDisabled(true);
         setSubmitError('Email service not configured.');
       });
-  }, []);
+  }, [router.basePath]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -51,7 +53,7 @@ export default function ContactForm() {
     setErrors(newErrors);
     if (Object.keys(newErrors).length === 0) {
       try {
-        const res = await fetch('/api/contact', {
+        const res = await fetch(`${router.basePath}/api/contact`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(form),

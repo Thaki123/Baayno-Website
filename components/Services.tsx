@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 import styles from './Services.module.css';
 import cardStyles from './Card.module.css';
 import { FaBook, FaBookOpen, FaTools, FaStar, FaFlask, FaIndustry } from 'react-icons/fa';
@@ -13,13 +14,14 @@ interface Service {
 
 export default function Services() {
   const [services, setServices] = useState<Service[]>([]);
+  const router = useRouter();
 
   useEffect(() => {
-    fetch('/data/company.json')
+    fetch(`${router.basePath}/data/company.json`)
       .then(res => res.json())
       .then((data: { services?: Service[] }) => setServices(data.services || []))
       .catch(() => {});
-  }, []);
+  }, [router.basePath]);
 
   return (
     <section id="services" className={`container ${styles.services}`}>

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 import Layout from '@/components/Layout';
 import ContactForm from '@/components/ContactForm';
 import SEO from '@/components/SEO';
@@ -10,13 +11,14 @@ interface CompanyInfo {
 
 export default function ContactPage() {
   const [info, setInfo] = useState<CompanyInfo>({ address: '', phones: [] });
+  const router = useRouter();
 
   useEffect(() => {
-    fetch('/data/company.json')
+    fetch(`${router.basePath}/data/company.json`)
       .then(res => res.json())
       .then((data: CompanyInfo) => setInfo({ address: data.address, phones: data.phones || [] }))
       .catch(() => {});
-  }, []);
+  }, [router.basePath]);
 
   return (
     <Layout>
