@@ -3,7 +3,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  color: var(--color-white);
+  --loader-color: #a5a5b0;
+  color: var(--loader-color);
   height: 100vh;
   overflow: hidden;
 }
@@ -16,6 +17,7 @@
   text-align: center;
   height: 100%;
   padding: 2rem;
+  animation: hero-fade 0.8s ease-in-out;
 }
 
 .hero::before {
@@ -25,13 +27,24 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(165, 165, 176, 0.5);
   z-index: 1;
 }
 
 .hero > * {
   position: relative;
   z-index: 2;
+}
+
+@keyframes hero-fade {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 @media (max-width: 768px) {
