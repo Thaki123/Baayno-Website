@@ -1,18 +1,18 @@
 html[data-theme="light"] {
   --background: #ffffff;
   --foreground: #000000;
-  --accent: #d61f26;
-  --accent-hover: #b3191f;
-  --accent-active: #8f1419;
+  --accent: #4a90e2;
+  --accent-hover: #3a78c2;
+  --accent-active: #2a60a2;
   color-scheme: light;
 }
 
 html[data-theme="dark"] {
   --background: #1a1a1a;
   --foreground: #d61f26;
-  --accent: #d61f26;
-  --accent-hover: #b3191f;
-  --accent-active: #8f1419;
+  --accent: #4a90e2;
+  --accent-hover: #3a78c2;
+  --accent-active: #2a60a2;
   color-scheme: dark;
 }
 
@@ -68,7 +68,6 @@ html[data-theme="dark"] {
     --color-black: #0b0b0b;
     --color-white: #ffffff;
     --color-red: #d61f26;
-    --color-gold: #c9a227;
     --font-body: 'Open Sans', sans-serif;
     --font-heading: 'caecilia_lt_std55_roman', serif;
     --fw-normal: 400;
@@ -91,7 +90,7 @@ html[data-theme="dark"] {
 
 .gradient-bg {
     min-height: 100vh;
-    background: linear-gradient(-45deg, var(--color-gold), var(--accent));
+    background: linear-gradient(-45deg, var(--accent), var(--accent-hover));
     background-size: 400% 400%;
     animation: gold-accent-gradient 15s ease infinite;
 }

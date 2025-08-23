@@ -69,6 +69,6 @@
 
 .successMessage {
   display: block;
-  color: var(--color-gold);
+  color: var(--accent);
   margin-top: 1em;
 }
