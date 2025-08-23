@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   build:
@@ -17,11 +17,9 @@ jobs:
         with:
           node-version: 20
       - run: npm ci
-      - run: npm run build
-      - uses: actions/upload-artifact@v4
+      - run: npm run build && npx next export
+      - uses: peaceiris/actions-gh-pages@v4
         with:
-          name: next-standalone
-          path: |
-            .next/standalone
-            .next/static
-            public
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./out
+          publish_branch: gh-pages
