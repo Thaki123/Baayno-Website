@@ -8,13 +8,12 @@ interface SplashScreenProps {
 
 export default function SplashScreen({ onFinish }: SplashScreenProps) {
   useEffect(() => {
-    const timer = setTimeout(onFinish, 2500);
+    const timer = setTimeout(onFinish, 3000);
     return () => clearTimeout(timer);
   }, [onFinish]);
 
   return (
     <motion.div
-      onClick={onFinish}
       className="splash-screen"
       initial={{ opacity: 1 }}
       animate={{ opacity: 1 }}
