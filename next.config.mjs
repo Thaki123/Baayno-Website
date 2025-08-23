@@ -17,7 +17,6 @@ const nextConfig = {
     unoptimized: true,
     domains: ['images.unsplash.com'],
   },
-  output: 'export',
   basePath,
   assetPrefix: basePath ? `${basePath}/` : undefined,
 };
