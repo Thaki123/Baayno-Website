@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 import { motion, AnimatePresence } from 'framer-motion';
 import styles from './QuoteForm.module.css';
 
@@ -24,9 +25,10 @@ export default function QuoteForm() {
   const [success, setSuccess] = useState('');
   const [submitError, setSubmitError] = useState('');
   const [disabled, setDisabled] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
-    fetch('/api/quote')
+    fetch(`${router.basePath}/api/quote`)
       .then((res) => {
         if (!res.ok) {
           setDisabled(true);
@@ -37,7 +39,7 @@ export default function QuoteForm() {
         setDisabled(true);
         setSubmitError('Email service not configured.');
       });
-  }, []);
+  }, [router.basePath]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>): void => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -56,7 +58,7 @@ export default function QuoteForm() {
     setErrors(newErrors);
     if (Object.keys(newErrors).length === 0) {
       try {
-        const res = await fetch('/api/quote', {
+        const res = await fetch(`${router.basePath}/api/quote`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(form),
