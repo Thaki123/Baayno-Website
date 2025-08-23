@@ -26,9 +26,13 @@ This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-appl
 
 ## Environment Variables
 
-Email-based features require the following environment variables. Copy `.env.example` to `.env` and update with your SMTP credentials:
+Copy `.env.example` to `.env` and update as needed.
 
 ```
+# Path prefix for subdirectory deployments (e.g., GitHub Pages)
+BASE_PATH=/Baayno-Website
+
+# SMTP configuration for form submissions
 SMTP_HOST=
 SMTP_PORT=
 SMTP_USER=
@@ -37,7 +41,7 @@ SMTP_FROM=
 SMTP_TO=
 ```
 
-If these values are missing in production, contact and quote forms will be disabled.
+`BASE_PATH` defaults to `""` for root-domain deployments. If the SMTP values are missing in production, contact and quote forms will be disabled.
 
 ## Learn More
 
@@ -70,14 +74,14 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/b
 
 3. **Static hosting (e.g., GitHub Pages)**
 
-- Enable static export in `next.config.js`:
-  - `output: 'export'`
-  - `basePath: '/Baayno-Website'`
-  - `assetPrefix: '/Baayno-Website/'`
-  - (optional) `images: { unoptimized: true }` and `trailingSlash: true` for Pages.
-- Run `npm run build`. This creates an `out/` folder with `index.html` and assets.
+- Set the `BASE_PATH` environment variable to your repository name. Example:
+
+  ```bash
+  BASE_PATH=/Baayno-Website npm run build && npx next export
+  ```
+
 - Deploy the contents of `out/` as your site root (GitHub Pages: serve `gh-pages` branch from `/`).
-- If you fork or rename the repo, update `basePath` and `assetPrefix` in `next.config.js` to match the new repo name.
+- If you fork or rename the repo, update the `BASE_PATH` value to match the new repo name.
 
 4. **Server hosting (e.g., Vercel/Netlify)**
 
