@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import styles from './ContactForm.module.css';
 
@@ -19,6 +19,21 @@ export default function ContactForm() {
   const [errors, setErrors] = useState<ErrorState>({});
   const [success, setSuccess] = useState('');
   const [submitError, setSubmitError] = useState('');
+  const [disabled, setDisabled] = useState(false);
+
+  useEffect(() => {
+    fetch('/api/contact')
+      .then((res) => {
+        if (!res.ok) {
+          setDisabled(true);
+          setSubmitError('Email service not configured.');
+        }
+      })
+      .catch(() => {
+        setDisabled(true);
+        setSubmitError('Email service not configured.');
+      });
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -26,6 +41,7 @@ export default function ContactForm() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
+    if (disabled) return;
     const newErrors: ErrorState = {};
     if (!form.name.trim()) newErrors.name = 'Name is required.';
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -144,7 +160,9 @@ export default function ContactForm() {
           )}
         </AnimatePresence>
       </div>
-      <button type="submit" className={styles.button} aria-label="Send message">Send</button>
+      <button type="submit" className={styles.button} aria-label="Send message" disabled={disabled}>
+        Send
+      </button>
       <AnimatePresence>
         {success && (
           <motion.span

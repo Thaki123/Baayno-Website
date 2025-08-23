@@ -4,7 +4,7 @@ import ContactForm from '../components/ContactForm';
 
 describe('ContactForm', () => {
   it('shows validation errors for empty and invalid input', async () => {
-    const mockFetch = jest.fn();
+    const mockFetch = jest.fn().mockResolvedValue({ ok: true });
     (global as any).fetch = mockFetch;
 
     render(<ContactForm />);
@@ -13,7 +13,7 @@ describe('ContactForm', () => {
     expect(await screen.findByText('Name is required.')).toBeInTheDocument();
     expect(await screen.findByText('Email is required.')).toBeInTheDocument();
     expect(await screen.findByText('Message is required.')).toBeInTheDocument();
-    expect(mockFetch).not.toHaveBeenCalled();
+    expect(mockFetch).toHaveBeenCalledTimes(1);
 
     fireEvent.change(screen.getByLabelText(/name/i), { target: { value: 'John Doe' } });
     fireEvent.change(screen.getByLabelText(/email/i), { target: { value: 'invalid' } });
@@ -21,14 +21,13 @@ describe('ContactForm', () => {
     fireEvent.click(screen.getByRole('button', { name: /send/i }));
 
     expect(await screen.findByText('Enter a valid email.')).toBeInTheDocument();
-    expect(mockFetch).not.toHaveBeenCalled();
+    expect(mockFetch).toHaveBeenCalledTimes(1);
   });
 
   it('resets form and shows confirmation on success', async () => {
-    const mockFetch = jest.fn().mockResolvedValue({
-      ok: true,
-      json: async () => ({ message: 'Message sent!' }),
-    });
+    const mockFetch = jest
+      .fn()
+      .mockResolvedValue({ ok: true, json: async () => ({ message: 'Message sent!' }) });
     (global as any).fetch = mockFetch;
 
     render(<ContactForm />);
@@ -38,7 +37,13 @@ describe('ContactForm', () => {
 
     fireEvent.click(screen.getByRole('button', { name: /send/i }));
 
-    await waitFor(() => expect(mockFetch).toHaveBeenCalledWith('/api/contact', expect.any(Object)));
+    await waitFor(() =>
+      expect(mockFetch).toHaveBeenNthCalledWith(
+        2,
+        '/api/contact',
+        expect.objectContaining({ method: 'POST' })
+      )
+    );
 
     expect(await screen.findByText('Message sent!')).toBeInTheDocument();
     expect(screen.getByLabelText(/name/i)).toHaveValue('');

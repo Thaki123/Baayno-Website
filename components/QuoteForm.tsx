@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import styles from './QuoteForm.module.css';
 
@@ -23,6 +23,21 @@ export default function QuoteForm() {
   const [errors, setErrors] = useState<ErrorState>({});
   const [success, setSuccess] = useState('');
   const [submitError, setSubmitError] = useState('');
+  const [disabled, setDisabled] = useState(false);
+
+  useEffect(() => {
+    fetch('/api/quote')
+      .then((res) => {
+        if (!res.ok) {
+          setDisabled(true);
+          setSubmitError('Email service not configured.');
+        }
+      })
+      .catch(() => {
+        setDisabled(true);
+        setSubmitError('Email service not configured.');
+      });
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>): void => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -30,6 +45,7 @@ export default function QuoteForm() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
+    if (disabled) return;
     const newErrors: ErrorState = {};
     if (!form.name.trim()) newErrors.name = 'Name is required.';
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -198,7 +214,9 @@ export default function QuoteForm() {
               className={styles.textarea}
             ></textarea>
           </div>
-          <button type="submit" className={styles.button} aria-label="Submit quote request">Submit</button>
+          <button type="submit" className={styles.button} aria-label="Submit quote request" disabled={disabled}>
+            Submit
+          </button>
           <AnimatePresence>
             {success && (
               <motion.span
