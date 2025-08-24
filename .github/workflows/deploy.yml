@@ -18,6 +18,8 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build   # outputs ./out
+        env:
+          BASE_PATH: '/Baayno-Website'
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ./out
