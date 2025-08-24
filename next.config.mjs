@@ -1,7 +1,7 @@
 import nextPWA from 'next-pwa';
 
 const isProd = process.env.NODE_ENV === 'production';
-const basePath = process.env.BASE_PATH || '';
+const basePath = process.env.BASE_PATH ?? '/Baayno-Website';
 
 const withPWA = nextPWA({
   dest: 'public',
