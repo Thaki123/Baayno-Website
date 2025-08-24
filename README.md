@@ -74,13 +74,14 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/b
 
 3. **Static hosting (e.g., GitHub Pages)**
 
-- Set the `BASE_PATH` environment variable to your repository name. Example:
+- Ensure `output: 'export'` is set in `next.config.mjs` so `next build` emits static files to `out/`.
+- Set the `BASE_PATH` environment variable to your repository name. The value **must** match the repository name (e.g., `BASE_PATH=/Baayno-Website`).
+- Build and publish:
 
   ```bash
   BASE_PATH=/Baayno-Website npm run build
+  npx gh-pages -d out
   ```
-
-  When `output: 'export'` is configured in `next.config.mjs`, `next build` emits static files to `out/`.
 
 - Deploy the contents of `out/` as your site root (GitHub Pages: serve `gh-pages` branch from `/`).
 - If you fork or rename the repo, update the `BASE_PATH` value to match the new repo name.
