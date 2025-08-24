@@ -1,7 +1,7 @@
 import nextPWA from 'next-pwa';
 
 const isProd = process.env.NODE_ENV === 'production';
-const basePath = process.env.BASE_PATH ?? '/Baayno-Website';
+const basePath = process.env.BASE_PATH;
 
 const withPWA = nextPWA({
   dest: 'public',
@@ -12,6 +12,7 @@ const withPWA = nextPWA({
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: 'export',
   reactStrictMode: true,
   images: {
     unoptimized: true,
