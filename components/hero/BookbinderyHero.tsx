@@ -16,6 +16,7 @@ function MediaLoop(
     rounded = "rounded-2xl",
     maintainAspect = true,
     forceCarousel = false,
+    altTexts = [],
   }: {
     sources: string[];
     interval?: number;
@@ -24,6 +25,7 @@ function MediaLoop(
     rounded?: string;
     maintainAspect?: boolean;
     forceCarousel?: boolean;
+    altTexts?: string[];
   }
 ) {
   const [index, setIndex] = useState(0);
@@ -69,12 +71,13 @@ function MediaLoop(
                 muted
                 loop
                 poster={poster}
+                aria-label={altTexts[i]}
               ></video>
             ) : (
               <img
                 key={src}
                 src={src}
-                alt="Media"
+                alt={altTexts[i] || ""}
                 className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${i === index ? "opacity-100" : "opacity-0"}`}
               />
             )
@@ -90,6 +93,7 @@ function MediaLoop(
           muted
           loop
           poster={poster}
+          aria-label={altTexts[0]}
         ></video>
       )}
 
@@ -191,6 +195,11 @@ function HeroHeritageClean() {
         <MediaLoop
           className="aspect-[4/3] w-full rounded-2xl shadow-2xl"
           sources={["/media/factory-exterior.jpg", "/media/factory-interior.mp4", "/media/team-working.jpg"]}
+          altTexts={[
+            "Exterior of the bindery",
+            "Interior of the bindery",
+            "Team working on bookbinding",
+          ]}
         />
       </div>
     </section>
@@ -263,6 +272,12 @@ function HeroSplitShowcase() {
             sources={["/media/factory-exterior.jpg", "/media/book-stacks.jpg", "/media/hand-stitching.mp4", "/media/foil-stamping.jpg"]}
             maintainAspect={false}
             forceCarousel
+            altTexts={[
+              "Exterior of the bindery",
+              "Stacks of finished books",
+              "Hand stitching a book",
+              "Foil stamping on a book cover",
+            ]}
           />
         </div>
       </div>
