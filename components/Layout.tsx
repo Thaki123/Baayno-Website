@@ -14,7 +14,9 @@ export default function Layout({ children }: LayoutProps) {
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
-    const sections = document.querySelectorAll('section');
+    const main = document.querySelector('main');
+    if (!main) return;
+    const sections = main.querySelectorAll('section');
     const observer = new IntersectionObserver(
       entries => {
         entries.forEach(entry => {
@@ -47,10 +49,12 @@ export default function Layout({ children }: LayoutProps) {
           exit={{ opacity: 0, y: -20 }}
           transition={{ duration: 0.3 }}
         >
-          {children}
-          <footer>
-            <p>&copy; 2025 Baayno Website</p>
-          </footer>
+          <main>
+            {children}
+            <footer>
+              <p>&copy; 2025 Baayno Website</p>
+            </footer>
+          </main>
         </motion.div>
       </AnimatePresence>
     </div>
