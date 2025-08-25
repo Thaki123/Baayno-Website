@@ -4,7 +4,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 import Layout from '@/components/Layout';
 import SEO from '@/components/SEO';
-import Hero from '@/components/Hero';
+import Hero from '@/components/hero';
 import About from '@/components/About';
 import QuoteForm from '@/components/QuoteForm';
 import Services from '@/components/Services';
