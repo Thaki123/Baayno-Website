@@ -1,1 +1,1 @@
-export { default } from './BookbinderyHeros';
+export { default } from './BookbinderyHero';

@@ -300,7 +300,7 @@ export function _Testcases() {
 }
 
 // Default export used by the canvas preview
-export default function BookbinderyHeros() {
+export default function BookbinderyHero() {
   return (
     <div className="mx-auto max-w-screen-2xl space-y-16 p-4 sm:p-8">
       <HeroHeritageClean />
