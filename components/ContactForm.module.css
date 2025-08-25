@@ -28,7 +28,7 @@
 .textarea:focus,
 .select:focus {
   border-color: var(--accent);
-  box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+  box-shadow: 0 0 0 2px rgba(231, 224, 213, 0.2);
   outline: none;
 }
 
@@ -38,27 +38,6 @@
   border-color: var(--color-red);
 }
 
-.button {
-  padding: var(--btn-padding);
-  font-size: 1em;
-  background: var(--accent);
-  color: var(--color-white);
-  border: none;
-  border-radius: var(--radius);
-  cursor: pointer;
-  transition: background 0.3s, transform 0.3s;
-}
-
-.button:hover,
-.button:focus {
-  background: var(--accent-hover);
-  transform: translateY(-2px);
-}
-
-.button:active {
-  background: var(--accent-active);
-  transform: translateY(0);
-}
 
 .errorMessage {
   display: block;
