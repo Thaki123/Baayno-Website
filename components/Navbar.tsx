@@ -45,6 +45,11 @@ export default function Navbar() {
             </Link>
           </li>
           <li>
+            <Link href="/about" onClick={close} className={isActive('/about') ? styles.active : ''}>
+              {t('about')}
+            </Link>
+          </li>
+          <li>
             <Link href="/services" onClick={close} className={isActive('/services') ? styles.active : ''}>
               {t('services')}
             </Link>
@@ -62,6 +67,11 @@ export default function Navbar() {
           <li>
             <Link href="/contact" onClick={close} className={isActive('/contact') ? styles.active : ''}>
               {t('contact')}
+            </Link>
+          </li>
+          <li>
+            <Link href="/quote" onClick={close} className={isActive('/quote') ? styles.active : ''}>
+              {t('quote')}
             </Link>
           </li>
         </ul>

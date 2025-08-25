@@ -1,9 +1,11 @@
 {
   "home": "Home",
+  "about": "About",
   "services": "Services",
   "portfolio": "Portfolio",
   "blog": "Blog",
   "contact": "Contact",
+  "quote": "Quote",
   "themeDark": "Dark",
   "themeLight": "Light",
   "seoTitle": "Baayno — Bookbinding & Finishing",
