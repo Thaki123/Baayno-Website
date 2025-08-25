@@ -1,18 +1,18 @@
 html[data-theme="light"] {
   --background: #ffffff;
   --foreground: #000000;
-  --accent: #4a90e2;
-  --accent-hover: #3a78c2;
-  --accent-active: #2a60a2;
+  --accent: #e7e0d5;
+  --accent-hover: #d9cfbe;
+  --accent-active: #cbc0b1;
   color-scheme: light;
 }
 
 html[data-theme="dark"] {
   --background: #1a1a1a;
   --foreground: #d61f26;
-  --accent: #4a90e2;
-  --accent-hover: #3a78c2;
-  --accent-active: #2a60a2;
+  --accent: #e7e0d5;
+  --accent-hover: #d9cfbe;
+  --accent-active: #cbc0b1;
   color-scheme: dark;
 }
 
@@ -173,52 +173,46 @@ body {
   }
 
 /* Buttons */
-  button {
-      padding: var(--btn-padding);
-      font-size: 1em;
-      background: var(--accent);
-      color: var(--color-white);
-      border: none;
-      border-radius: var(--radius);
-      cursor: pointer;
-      transition: all 0.3s ease;
-  }
-
-  button:hover,
-  button:focus {
-      background: var(--accent-hover);
-      transform: translateY(-2px);
-  }
-
-  button:active {
-      background: var(--accent-active);
-      transform: translateY(0);
-  }
-
+button,
 .btn {
-    display: inline-block;
     padding: var(--btn-padding);
-    border-radius: var(--radius);
-    border: 2px solid transparent;
+    font-size: 1em;
+    border-radius: 9999px;
+    border: 1px solid rgba(231, 224, 213, 0.4);
+    background: rgba(231, 224, 213, 0.2);
+    color: var(--color-black);
+    backdrop-filter: blur(10px);
     cursor: pointer;
-    transition: background 0.3s, color 0.3s, transform 0.3s;
+    transition: background 0.3s, transform 0.3s;
 }
 
-  .btn-primary {
-      background: var(--accent);
-      color: var(--color-white);
-  }
+button:hover,
+button:focus,
+.btn:hover,
+.btn:focus {
+    background: rgba(231, 224, 213, 0.4);
+    transform: translateY(-2px);
+}
 
-  .btn-primary:hover,
-  .btn-primary:focus {
-      background: var(--accent-hover);
-      transform: translateY(-2px);
-  }
+button:active,
+.btn:active {
+    background: rgba(231, 224, 213, 0.6);
+    transform: translateY(0);
+}
 
-  .btn-primary:active {
-      background: var(--accent-active);
-      transform: translateY(0);
-  }
+.btn-primary {
+    background: rgba(231, 224, 213, 0.6);
+    border-color: rgba(231, 224, 213, 0.6);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background: rgba(231, 224, 213, 0.8);
+}
+
+.btn-primary:active {
+    background: rgba(231, 224, 213, 1);
+}
 
 footer {
     text-align: center;

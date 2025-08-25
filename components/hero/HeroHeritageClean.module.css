@@ -36,3 +36,8 @@
   padding: 2rem;
   color: var(--color-white);
 }
+
+.title {
+  font-family: var(--font-heading);
+  font-weight: var(--fw-bold);
+}
