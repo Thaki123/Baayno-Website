@@ -32,11 +32,15 @@ function MediaLoop(
   const useCarousel = forceCarousel || !firstIsVideo;
 
   useEffect(() => {
+    setIndex(0);
+  }, [sources]);
+
+  useEffect(() => {
     if (onlyOne || !useCarousel) return;
     if (sources.length === 0) return;
     const id = setInterval(() => setIndex((i) => (i + 1) % sources.length), interval);
     return () => clearInterval(id);
-  }, [interval, onlyOne, useCarousel, sources.length]);
+  }, [interval, onlyOne, useCarousel, sources]);
 
   // Fallback for empty sources
   if (!sources || sources.length === 0) {
