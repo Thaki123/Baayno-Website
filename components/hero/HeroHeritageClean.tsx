@@ -1,13 +1,13 @@
 import { motion } from 'framer-motion';
+import { useRouter } from 'next/router';
 import BookLogo from './BookLogo';
 import MediaLoop from './MediaLoop';
 import styles from './HeroHeritageClean.module.css';
 
 export default function HeroHeritageClean() {
-  const scrollToQuote = (): void => {
-    if (typeof document !== 'undefined') {
-      document.getElementById('quote')?.scrollIntoView({ behavior: 'smooth' });
-    }
+  const router = useRouter();
+  const goToQuote = (): void => {
+    router.push('/quote').catch(() => {});
   };
 
   return (
@@ -31,7 +31,7 @@ export default function HeroHeritageClean() {
         <p>Precision Bookbinding &amp; Finishing</p>
         <motion.button
           className="btn btn-primary"
-          onClick={scrollToQuote}
+          onClick={goToQuote}
           aria-label="Request a Quote"
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
