@@ -162,7 +162,7 @@ export default function ContactForm() {
           )}
         </AnimatePresence>
       </div>
-      <button type="submit" className={styles.button} aria-label="Send message" disabled={disabled}>
+      <button type="submit" className="btn btn-primary" aria-label="Send message" disabled={disabled}>
         Send
       </button>
       <AnimatePresence>

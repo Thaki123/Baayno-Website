@@ -21,7 +21,7 @@ export default function HeroHeritageClean() {
       <div className={styles.content}>
         <BookLogo />
         <motion.h1
-          className="heading-font"
+          className={styles.title}
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, ease: 'easeInOut' }}

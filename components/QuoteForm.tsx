@@ -216,7 +216,7 @@ export default function QuoteForm() {
               className={styles.textarea}
             ></textarea>
           </div>
-          <button type="submit" className={styles.button} aria-label="Submit quote request" disabled={disabled}>
+          <button type="submit" className="btn btn-primary" aria-label="Submit quote request" disabled={disabled}>
             Submit
           </button>
           <AnimatePresence>
